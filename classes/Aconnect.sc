@@ -44,8 +44,8 @@ Aconnect {
       |line|
       line = line.split($:);
       (
-        \port: line.at(0).tr("client ", "").stripWhiteSpace,
-        \device: line.at(1).findRegexp("'.*'").pop().at(1).tr("'","").stripWhiteSpace
+        \port: line.at(0).replace("client ", "").stripWhiteSpace,
+        \device: line.at(1).findRegexp("'.*'").pop().at(1).replace("'","").stripWhiteSpace
       );
     };
   }

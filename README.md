@@ -2,6 +2,11 @@
 
 SuperCollider utilities to ease the job of the everyday coder.
 
+## Install
+
+Simply clone this repository in the `Extension` directory.
+The path can be found by evaluating `Platform.userExtensionDir` or `Platform.systemExtensionDir`.
+
 ## Aconnect.sc
 
 A simple `aconnect` front end. Useful when you need to connect _other_ MIDI clients.
@@ -52,3 +57,7 @@ FluidCommands.send(f.port, select++chans);
 var unload = FluidCommands.unloadSoundfont(1);
 FluidCommands.send(f.port, unload);
 ```
+
+## LICENSE
+
+See [LICENSE](LICENSE)

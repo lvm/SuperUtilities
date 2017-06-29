@@ -7,29 +7,10 @@ SuperCollider utilities to ease the job of the everyday coder.
 Simply clone this repository in the `Extension` directory.
 The path can be found by evaluating `Platform.userExtensionDir` or `Platform.systemExtensionDir`.
 
-## Aconnect.sc
-
-A simple `aconnect` front end. Useful when you need to connect _other_ MIDI clients.
-
-### Usage
-
-```
-a = Aconnect.new;
-
-a.in.postln;
-a.out.postln;
-
-i = a.inByName("midi through");
-o = a.outByName("amsynth");
-
-a.connect(i.port, o.port);
-a.disconnect(i.port, o.port);
-```
 
 ## FluidSynth.sc
 
 Not quite a `fluidsynth` implementation but some sort of _front-end_.  
-
 
 ### Usage
 
@@ -56,6 +37,49 @@ FluidCommands.send(f.port, select++chans);
 
 var unload = FluidCommands.unloadSoundfont(1);
 FluidCommands.send(f.port, unload);
+```
+
+## Aconnect.sc
+
+A simple `aconnect` front end. Useful when you need to connect _other_ MIDI clients.
+
+### Usage
+
+```
+a = Aconnect.new;
+
+a.in.postln;
+a.out.postln;
+
+i = a.inByName("midi through");
+o = a.outByName("amsynth");
+
+a.connect(i.port, o.port);
+a.disconnect(i.port, o.port);
+```
+
+
+## Tiny.sc
+
+A class for the lazy-coder.
+
+### Usage
+
+```
+var sni = (
+  \gg: "GG WP",
+  \hf: "HF GL",
+);
+```
+
+```
+TinySnippets.enable("t", sni);
+-> TinySnippets enabled with hotkey Ctrl+t
+```
+
+```
+TinySnippets.disable;
+-> TinySnippets disabled
 ```
 
 ## LICENSE

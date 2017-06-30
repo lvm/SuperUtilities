@@ -37,6 +37,9 @@ FluidCommands.send(f.port, select++chans);
 
 var unload = FluidCommands.unloadSoundfont(1);
 FluidCommands.send(f.port, unload);
+
+
+FluidServer.stop(f.pid);
 ```
 
 ## Aconnect.sc

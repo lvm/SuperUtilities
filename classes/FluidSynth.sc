@@ -8,7 +8,7 @@
         Reference:
         * https://sourceforge.net/p/fluidsynth/wiki/FluidSettings/
 
-        Note: Requires `fluidsynth` and `netcat` installed in the system.
+        Note: Requires `fluidsynth`, `netcat`, `procps`, `grep` installed in the system.
 */
 
 FluidSynth {

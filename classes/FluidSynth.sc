@@ -13,7 +13,7 @@
 
 FluidSynth {
   classvar err_no_file;
-  var <>audio_server, <>channels, <>port, <>commands_file;
+  var <>audio_server, <>channels, <>port, <>commands_file, <>pid;
 
   *new {
     |audio_server channels port commands_file|
@@ -29,11 +29,13 @@ FluidSynth {
     this.channels = channels ? 16;
     this.port = port ? 9800;
     this.commands_file = commands_file;
-    FluidServer.boot(audio_server, channels, port, commands_file);
+    this.pid = FluidServer.boot(audio_server, channels, port, commands_file);
   }
 }
 
 FluidServer {
+  classvar <>fluidpid;
+
   *new {
     |audio_server channels port commands_file|
     ^this.boot(audio_server, channels, port, commands_file);
@@ -41,7 +43,8 @@ FluidServer {
 
   *boot {
     |audio_server channels port commands_file|
-    var sf, audioServer, tcpPort, chan, cmds;
+
+    var sf, audioServer, tcpPort, chan, cmds, fluidpid;
     var fluidsynth = "which fluidsynth".unixCmdGetStdOut.replace("\n", "").asString;
     var valid_audio_servers = ["alsa", "file", "jack", "oss", "pulseaudio"];
     var fluidsynth_args;
@@ -79,8 +82,16 @@ FluidServer {
 
     fluidsynth_args = " -sil" ++ audioServer.asString ++ chan.asString ++ tcpPort.asString;
 
-    (fluidsynth ++ fluidsynth_args.asString ++ " " ++ cmds.asString).unixCmd;
-    ^"FluidSynth is running!"
+    fluidpid = (fluidsynth ++ fluidsynth_args.asString ++ " " ++ cmds.asString).unixCmd;
+    "FluidSynth is running!".postln;
+    ^fluidpid;
+  }
+
+  *stop {
+    |ppid|
+    var cpid = "ps --ppid % -o pid|grep -v '^ '".format(ppid).unixCmdGetStdOut;
+    "kill -9 % %".format(ppid, cpid).unixCmd(postOutput: false);
+    ^"FluidSynth is stopped!"
   }
 }
 

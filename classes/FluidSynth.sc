@@ -8,98 +8,100 @@
         Reference:
         * https://sourceforge.net/p/fluidsynth/wiki/FluidSettings/
 
-        Note: Requires `fluidsynth`, `netcat`, `procps`, `grep` installed in the system.
+        Note: Requires `fluidsynth` installed in the system.
 */
 
 FluidSynth {
-  classvar err_no_file;
-  var <>audio_server, <>channels, <>port, <>commands_file, <>pid;
+  classvar err_msg, fluidsynth, fluidOutput;
+  classvar fluidsynth_bin, fluidsynth_args;
+  classvar valid_audio_servers;
+  classvar audio_server, channels, commands_file;
 
   *new {
-    |audio_server channels port commands_file|
-    ^super.newCopyArgs(audio_server, channels, port, commands_file).init;
+    |audio_server channels commands_file|
+    ^this.boot(audio_server, channels, commands_file);
   }
 
   *initClass {
-    err_no_file = "File doesn't exists or isn't readable";
-  }
-
-  init {
-    this.audio_server = audio_server ? "jack";
-    this.channels = channels ? 16;
-    this.port = port ? 9800;
-    this.commands_file = commands_file;
-    this.pid = FluidServer.boot(audio_server, channels, port, commands_file);
-  }
-}
-
-FluidServer {
-  classvar <>fluidpid;
-
-  *new {
-    |audio_server channels port commands_file|
-    ^this.boot(audio_server, channels, port, commands_file);
+    fluidsynth_bin = "which fluidsynth".unixCmdGetStdOut.replace("\n", "").asString;
+    valid_audio_servers = ["alsa", "file", "jack", "oss", "pulseaudio"];
+    err_msg = "TODO: Complete with a proper error message.";
   }
 
   *boot {
-    |audio_server channels port commands_file|
+    |audio_server channels commands_file|
 
-    var sf, audioServer, tcpPort, chan, cmds, fluidpid;
-    var fluidsynth = "which fluidsynth".unixCmdGetStdOut.replace("\n", "").asString;
-    var valid_audio_servers = ["alsa", "file", "jack", "oss", "pulseaudio"];
-    var fluidsynth_args;
+    var audioServer, chan, cmds;
 
-    audioServer = if (
-      audio_server.isNil.not and:
-      (valid_audio_servers.atIdentityHash(audio_server) == 0),
-      { audio_server },
-      { "jack" });
-    // also, if audioServer is jack autoconnect.
-    audioServer = if (
-      audioServer == "jack",
-      { format(" -j -a %", audioServer) },
-      { format(" -a %", audioServer) });
+    if ( currentEnvironment.at(\fluidsynth).isNil ){
+      ~fluidsynth = this;
 
-    chan = if (
-      channels.isNil.not and: (channels.isKindOf(Integer)),
+      audioServer = if (
+        audio_server.isNil.not and:
+        (valid_audio_servers.atIdentityHash(audio_server) == 0),
+        { audio_server },
+        { "jack" });
+      // also, if audioServer is jack autoconnect.
+      audioServer = if (
+        audioServer == "jack",
+        { format(" -j -a %", audioServer) },
+        { format(" -a %", audioServer) });
+
+      chan = if (
+        channels.isNil.not and: (channels.isKindOf(Integer)),
         { format(" -K %", channels.asInt.clip(16, 256)) },
         { " -K 16" });
 
-    tcpPort = if (
-      port.isNil.not and: (port.isKindOf(Integer)),
-      { format(" -o 'shell.port=%' ", port.asInt) },
-      { "" });
+      cmds = if (
+        commands_file.isNil.not,
+        {
+          if (
+            File.exists(commands_file.standardizePath),
+            { " -f " ++ commands_file.standardizePath },
+            { "" });
+        },
+        { "" });
 
-    cmds = if (
-      commands_file.isNil.not,
-      {
-        if (
-          File.exists(commands_file.standardizePath),
-          { " -f " ++ commands_file.standardizePath },
-          { "" });
-      },
-      { "" });
 
-    fluidsynth_args = " -sil" ++ audioServer.asString ++ chan.asString ++ tcpPort.asString;
+      fluidsynth_args = " -sl" ++ audioServer.asString ++ chan.asString ++ " " ++ cmds.asString;
+      fluidsynth = Pipe.new("% %".format(fluidsynth_bin, fluidsynth_args.asString), "w");
+      fluidOutput = Routine {
+        var line = fluidsynth.getLine;
+        while(
+          { line.notNil },
+          {
+            line.postln;
+            line = fluidsynth.getLine;
+          }
+        );
+        fluidsynth.close;
+      };
+      ^"FluidSynth is running!";
+    }
+  }
 
-    fluidpid = (fluidsynth ++ fluidsynth_args.asString ++ " " ++ cmds.asString).unixCmd;
-    "FluidSynth is running!".postln;
-    ^fluidpid;
+  *send {
+    |message|
+
+    fluidsynth.write("%\n".format(message));
+    fluidsynth.flush;
   }
 
   *stop {
-    |ppid|
-    var cpid = "ps --ppid % -o pid|grep -v '^ '".format(ppid).unixCmdGetStdOut;
-    "kill -9 % %".format(ppid, cpid).unixCmd(postOutput: false);
+
+    fluidsynth.close;
+    ~fluidsynth = nil;
     ^"FluidSynth is stopped!"
   }
+
+
 }
 
 FluidCommands {
-  classvar err_no_file;
+  classvar err_msg;
 
   *initClass {
-    err_no_file = "File doesn't exists or isn't readable";
+    err_msg = "TODO: Complete with a proper error message.";
   }
 
   *setGain {
@@ -126,7 +128,7 @@ FluidCommands {
     |soundfont|
 
     if (soundfont.isNil) {
-      Error(soundfont ++ ": " ++ err_no_file).throw;
+      Error(err_msg).throw;
     };
 
     ^format("\nload %", soundfont);
@@ -136,7 +138,7 @@ FluidCommands {
     |soundfont|
 
     if (soundfont.isNil) {
-      Error(soundfont ++ ": " ++ err_no_file).throw;
+      Error(err_msg).throw;
     };
 
     ^format("\nunload %", soundfont);
@@ -160,24 +162,6 @@ FluidCommands {
     ^select_cmd;
   }
 
-  *send {
-    |port, commands|
-    var nc;
-
-    if (
-      port.isNil.not and: (commands.isNil.not),
-      {
-        commands = format("'%\nquit'", commands);
-        nc = format("echo % | nc localhost %", commands, port);
-        nc.unixCmdGetStdOut.postln;
-      },
-      {
-        Error("Missing port or commands").throw;
-      }
-    );
-    ^"FluidSynth Commands Sent";
-  }
-
   *save {
     |filename, commands|
     var f;
@@ -190,7 +174,7 @@ FluidCommands {
         f.close;
       },
       {
-        Error("Missing filename or commands").throw;
+        Error(err_msg).throw;
       }
     );
     ^"FluidSynth Commands Saved";

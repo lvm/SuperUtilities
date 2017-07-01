@@ -85,6 +85,28 @@ TinySnippets.disable;
 -> TinySnippets disabled
 ```
 
+
+## Tidal.sc
+
+Another TidalCycles interface.
+
+
+### Usage
+
+```
+Tidal.start;
+
+Tidal.send(":module Sound.Tidal.Context");
+Tidal.send("(cps, getNow) <- bpsUtils");
+Tidal.send("(d1,t1) <- superDirtSetters getNow");
+Tidal.send(":set prompt ".format("tidal> ".quote));
+
+Tidal.send("d1 $ sound % # release 0.25".format("kick".quote));
+Tidal.send("d1 silence");
+
+Tidal.stop;
+```
+
 ## LICENSE
 
 See [LICENSE](LICENSE)

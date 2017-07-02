@@ -32,7 +32,7 @@ Aconnect {
   *new {  }
 
   *initClass {
-    cmd = "which aconnect".unixCmdGetStdOut.replace("\n", "").asString;
+    cmd = "which aconnect".unixCmdGetStdOut.replace(Char.nl, "").asString;
   }
 
   *runCmd {

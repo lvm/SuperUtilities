@@ -23,7 +23,7 @@ FluidSynth {
   }
 
   *initClass {
-    fluidsynth_bin = "which fluidsynth".unixCmdGetStdOut.replace("\n", "").asString;
+    fluidsynth_bin = "which fluidsynth".unixCmdGetStdOut.replace(Char.nl, "").asString;
     valid_audio_servers = ["alsa", "file", "jack", "oss", "pulseaudio"];
     err_msg = "TODO: Complete with a proper error message.";
   }

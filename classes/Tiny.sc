@@ -15,17 +15,41 @@ TinySnippets {
     ^this.enable(key, snippets);
   }
 
+
+  *selectionEnd {
+    |doc start = -1|
+    var str, end;
+    end = start;
+    str = doc.string;
+    while {
+      str[end] !== Char.nl
+    } { end = end + 1 };
+    ^end;
+  }
+
   *enable {
     |key snippets|
-    key = key.asString;
-    keyCode = key.ascii.pop();
+    key = key ? "y";
+    keyCode = key.asString.ascii.pop();
     snippets = ().putAll((), snippets);
 
     keyFunc = {
       |doc, char, mod, uni, kc, k|
-      var code;
+      var code, selected, current, start, end;
       if (mod.isCtrl and: {kc == keyCode}) {
-        code = snippets.at(doc.selectedString.asSymbol);
+        current = doc.currentLine;
+        selected = doc.selectedString;
+
+
+        if (selected.asString.size.booleanValue.not) {
+          start = doc.selectionStart;
+          end = this.selectionEnd(doc, doc.selectionStart);
+
+          selected = current.replace(Char.nl,"").stripWhiteSpace;
+          doc.selectRange(start, end-start);
+        };
+
+        code = snippets.at(selected.asSymbol);
         if (code.isNil.not) {
           if (doc.editable) {
             doc.selectedString_(code);

@@ -76,7 +76,7 @@ var sni = (
 ```
 
 ```
-TinySnippets.enable("t", sni);
+TinySnippets.enable("y", sni);
 -> TinySnippets enabled with hotkey Ctrl+t
 ```
 

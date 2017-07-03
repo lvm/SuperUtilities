@@ -37,17 +37,17 @@ TinySnippets {
       |doc, char, mod, uni, kc, k|
       var code, selected, current, start, end;
       if (mod.isCtrl and: {kc == keyCode}) {
-        current = doc.currentLine;
+        // current = doc.currentLine;
         selected = doc.selectedString;
 
 
-        if (selected.asString.size.booleanValue.not) {
+/*        if (selected.asString.size.booleanValue.not) {
           start = doc.selectionStart;
           end = this.selectionEnd(doc, doc.selectionStart);
 
           selected = current.replace(Char.nl,"").stripWhiteSpace;
           doc.selectRange(start, end-start);
-        };
+        };*/
 
         code = snippets.at(selected.asSymbol);
         if (code.isNil.not) {

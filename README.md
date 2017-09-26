@@ -42,6 +42,17 @@ FluidSynth.send(f.port, unload);
 FluidSynth.stop;
 ```
 
+## ChordProg.sc
+
+A simple Chord Progression class.
+
+### Usage
+
+```
+ChordProg.getMajorProg(\a, \pop);
+ChordProg.getMinorProg(\c, \blues);
+```
+
 ## Aconnect.sc
 
 A simple `aconnect` front end. Useful when you need to connect _other_ MIDI clients.

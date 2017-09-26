@@ -3,11 +3,11 @@ ChordProg {
   classvar majorChords, minorChords;
   classvar cMaj, cmin;
 
-  *new {  }
-
   *initClass {
     chromatic = [\c, \cs, \d, \ds, \e, \f, \fs, \g, \gs, \a, \as, \b];
     progression = (
+      \eleven: [1,0,1,4],
+      \elevenb: [1,4,1,0],
       \sad: [0,3,4,4],
       \ballad: [0,0,3,5],
       \rockplus: [0,3,0,4],
@@ -82,17 +82,21 @@ ChordProg {
 
   *getMajorProg {
     |key, prog|
-    ^Array.fill(progression[prog.asSymbol].size, {|i| majorChords[key.asSymbol][i] });
+    ^Array.fill(progression[prog.asSymbol].size, {|i| majorChords[key.asSymbol][progression[prog.asSymbol][i]] });
   }
 
   *getMinorProg {
     |key, prog|
-    ^Array.fill(progression[prog.asSymbol].size, {|i| minorChords[key.asSymbol][i] });
+    ^Array.fill(progression[prog.asSymbol].size, {|i| minorChords[key.asSymbol][progression[prog.asSymbol][i]] });
+  }
+
+  *getUserProg {
+    |key, prog, min_Maj|
+    var chords = if (min_Maj == \min, { minorChords }, { majorChords });
+    ^Array.fill(prog.size, {|i| i.postln; chords[key.asSymbol][progression[prog.asSymbol][i]] });
   }
 
   *getProgList {
     ^progression.keys();
   }
 }
-
-

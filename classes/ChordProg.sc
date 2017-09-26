@@ -3,19 +3,25 @@ ChordProg {
   classvar majorChords, minorChords;
   classvar cMaj, cmin;
 
+  *new {  }
+
   *initClass {
     chromatic = [\c, \cs, \d, \ds, \e, \f, \fs, \g, \gs, \a, \as, \b];
     progression = (
       \eleven: [1,0,1,4],
       \elevenb: [1,4,1,0],
+      \elevenc: [1,4,0],
       \sad: [0,3,4,4],
       \ballad: [0,0,3,5],
+      \balladb: [0,3,5,4],
       \rockplus: [0,3,0,4],
       \rebel: [3,4,3],
       \nrg: [0,2,3,5],
       \creepy: [0,5,3,4],
+      \creepyb: [0,5,1,4],
       \rock: [0,3,4],
       \gral: [0,3,4,0],
+      \gralb: [0,3,1,4],
       \blues: [0,3,0,4,0],
       \pop: [0,4,5,3],
       \roll: [0,3,4,3],

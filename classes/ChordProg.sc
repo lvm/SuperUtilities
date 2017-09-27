@@ -1,5 +1,5 @@
 ChordProg {
-  classvar chromatic, progression, maj, min, dim;
+  classvar chromatic, progression, circleof5th, maj, min, dim;
   classvar majorChords, minorChords;
   classvar cMaj, cmin;
 
@@ -38,6 +38,16 @@ ChordProg {
 
     cmin = [0+min, 2+dim, 4+maj, 5+min, 7+min, 9+maj, 11+maj];
     minorChords = (\c: cmin, \cs: cmin+1, \d: cmin+2, \ds: cmin+3, \e: cmin+4, \f: cmin+5, \fs: cmin+6, \g: cmin+7, \gs: cmin+8, \a: cmin+9, \as: cmin+10, \b: cmin+11);
+
+    circleof5th = (
+      \c: [\f, \g, \a],
+      \d: [\g, \a, \b],
+      \e: [\a, \b],
+      \f: [\c, \d],
+      \g: [\c, \d, \e],
+      \a: [\d, \e],
+      \b: [\e],
+    );
   }
 
   *buildScale {
@@ -96,10 +106,9 @@ ChordProg {
     ^Array.fill(progression[prog.asSymbol].size, {|i| minorChords[key.asSymbol][progression[prog.asSymbol][i]] });
   }
 
-  *getUserProg {
-    |key, prog, min_Maj|
-    var chords = if (min_Maj == \min, { minorChords }, { majorChords });
-    ^Array.fill(prog.size, {|i| i.postln; chords[key.asSymbol][progression[prog.asSymbol][i]] });
+  *getCircle {
+    |key|
+    ^circleof5th[key.asSymbol];
   }
 
   *getProgList {

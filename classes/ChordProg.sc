@@ -33,10 +33,12 @@ ChordProg {
     min = [0,3,7];
     dim = [0,3,6];
 
+    // Scale.minor
     cMaj = [0+maj, 2+min, 4+min, 5+maj, 7+maj, 9+min, 11+dim];
     majorChords = (\c: cMaj, \cs: cMaj+1, \d: cMaj+2, \ds: cMaj+3, \e: cMaj+4, \f: cMaj+5, \fs: cMaj+6, \g: cMaj+7, \gs: cMaj+8, \a: cMaj+9, \as: cMaj+10, \b: cMaj+11);
 
-    cmin = [0+min, 2+dim, 4+maj, 5+min, 7+min, 9+maj, 11+maj];
+    // Scale.minor
+    cmin = [0+min, 2+dim, 3+maj, 5+min, 7+min, 8+maj, 10+maj];
     minorChords = (\c: cmin, \cs: cmin+1, \d: cmin+2, \ds: cmin+3, \e: cmin+4, \f: cmin+5, \fs: cmin+6, \g: cmin+7, \gs: cmin+8, \a: cmin+9, \as: cmin+10, \b: cmin+11);
 
     circleof5th = (

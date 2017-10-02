@@ -163,8 +163,34 @@ ChordProg {
   }
 
   *getCircle {
-    |key|
-    ^circleof5th[key.asSymbol];
+    |key, as_int|
+    /*
+    if as_int, return position relative to root key
+    -> \f = \c, \d
+    -> \f = -5, -4
+    */
+    var notes = circleof5th[key.asSymbol];
+    ^if(as_int.isNil, {
+      notes
+    }, {
+      Array.fill(notes.size, {
+        |i|
+        var root = chromatic.indexOfEqual(key);
+        var rel = chromatic.indexOfEqual(notes[i]);
+        var n = 0;
+        if(rel < root, {
+          n = (root - rel) * -1;
+        }, {
+          n = rel - root;
+        });
+        n;
+      });
+    });
+  }
+
+  *getChord {
+    |key, chord|
+    ^(chromatic.indexOfEqual(key.asSymbol)+chords[chord.asSymbol]);
   }
 
   *getProgList {

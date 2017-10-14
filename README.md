@@ -10,36 +10,10 @@ The path can be found by evaluating `Platform.userExtensionDir` or `Platform.sys
 
 ## FluidSynth.sc
 
-Not quite a `fluidsynth` implementation but some sort of _front-end_.  
-
-### Usage
+Has its own quark now: https://github.com/lvm/FluidSynth.sc
 
 ```
-FluidSynth.boot;
-// or
-// FluidSynth.boot(audio_server: "jack", channels: 32, commands_file: "~/sf_commands");
-
-var gain = FluidCommands.setGain(1);
-var load = FluidCommands.loadSoundfont("~/filename.sf2");
-var list = FluidCommands.listSoundfonts;
-var chans = FluidCommands.listChannels;
-FluidSynth.send(gain++load++list);
-
-var inst = FluidCommands.listInstruments(1);
-FluidSynth.send(inst);
-
-var select = FluidCommands.selectInstruments([
-  (\chan: 2, \sfont: 1, \bank: 2, \prog: 4),
-  (\chan: 9, \sfont: 1, \bank: 128, \prog: 2),
-  (\chan: 10, \sfont: 1, \bank: 128, \prog: 1),
-]);
-FluidSynth.send(f.port, select++chans);
-
-var unload = FluidCommands.unloadSoundfont(1);
-FluidSynth.send(f.port, unload);
-
-
-FluidSynth.stop;
+Quarks.install("https://github.com/lvm/FluidSynth.sc");
 ```
 
 ## ChordProg.sc
@@ -96,11 +70,22 @@ TinySnippets.disable;
 -> TinySnippets disabled
 ```
 
+## MidiEvents.sc
+Events types for MIDIOut Patterns.
+
+### Usage
+
+```
+~midiOut = MIDIOut.newByName("...", "...");
+MidiEvents(~midiOut);
+        
+(\type, \md, \midinote, Pseq((60..72),inf).play;
+(\type, \cc, \control, Pseq((0..127),inf).play;
+```        
 
 ## Tidal.sc
 
 Another TidalCycles interface.
-
 
 ### Usage
 

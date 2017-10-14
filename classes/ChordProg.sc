@@ -1,5 +1,5 @@
 ChordProg {
-  classvar chromatic, progression, circleof5th, chords;
+  classvar chromatic, progression, circleof5th, chords, functions;
   classvar majorChords, minorChords;
   classvar cMaj, cmin;
 
@@ -12,6 +12,7 @@ ChordProg {
       \eleven: [1,0,1,4],
       \elevenb: [1,4,1,0],
       \elevenc: [1,4,0],
+      \elevend: [5,1,4,0],
       \sad: [0,3,4,4],
       \ballad: [0,0,3,5],
       \balladb: [0,3,5,4],
@@ -27,7 +28,7 @@ ChordProg {
       \pop: [0,4,5,3],
       \roll: [0,3,4,3],
       \unresolved: [3,0,3,4],
-      \bluesplus: [0,0,0,0,3,3,0,0,4,3,0,0,]
+      \bluesplus: [0,0,0,0,3,3,0,0,4,3,0,0,],
     );
 
     circleof5th = (
@@ -83,6 +84,7 @@ ChordProg {
       \sevenSharp9: [0, 4, 7, 10, 15],
       \sevenSharp5Flat9: [0, 4, 8, 10, 13],
       \m7Flat5: [0, 3, 6, 10],
+      \m7dim: [0, 3, 6, 9],
       \m7Sharp5: [0, 3, 8, 10],
       \m7Flat9: [0, 3, 7, 10, 13],
       \nineSharp11: [0, 4, 7, 10, 14, 18],
@@ -94,8 +96,13 @@ ChordProg {
       \maj9Sus4: [0, 5, 7, 11, 14]
     );
 
+    functions = (
+      \tonic: [0,2,4,5,6], // 1,3,5,6,7
+      \subdominant: [0,1,2,3,5], // 1,2,3,4,6
+      \dominant: [1,3,4,5,6], // 2,4,5,6,7
+    );
 
-    // Scale.minor
+    // Scale.major
     cMaj = [0+chords[\maj], 2+chords[\min], 4+chords[\min], 5+chords[\maj], 7+chords[\maj], 9+chords[\min], 11+chords[\dim]];
     majorChords = (\c: cMaj, \cs: cMaj+1, \d: cMaj+2, \ds: cMaj+3, \e: cMaj+4, \f: cMaj+5, \fs: cMaj+6, \g: cMaj+7, \gs: cMaj+8, \a: cMaj+9, \as: cMaj+10, \b: cMaj+11);
 
@@ -160,6 +167,26 @@ ChordProg {
   *getMinorProg {
     |key, prog|
     ^Array.fill(progression[prog.asSymbol].size, {|i| minorChords[key.asSymbol][progression[prog.asSymbol][i]] });
+  }
+
+  *getHarmonicFunc {
+    |key, scale, func, deg|
+    var scaleChords = majorChords;
+    deg = (deg - 1).clip(0,6);
+
+    if (scale == \minor) {
+      scaleChords = minorChords;
+    };
+
+    if ( functions[func].isNil ) {
+      Error("Wrong function!").throw;
+    };
+
+    if ( functions[func].indexOfEqual(deg).isNil ) {
+      Error("Wrong degree!").throw;
+    };
+
+    ^scaleChords[key.asSymbol][ functions[func].indexOfEqual(deg) ];
   }
 
   *getCircle {

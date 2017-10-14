@@ -4,7 +4,11 @@
         (c) 2017 by Mauro <mauro@sdf.org>
         http://cyberpunk.com.ar/
 
-        Events types for MIDIOut Patterns.
+        Event types for MIDIOut Patterns.
+        
+        ~midiOut = MIDIOut.newByName("...", "...");
+        MidiEvents(~midiOut);
+        
         (\type, \md, \midinote, Pseq((60..72),inf).play;
         (\type, \cc, \control, Pseq((0..127),inf).play;
 */

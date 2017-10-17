@@ -172,7 +172,6 @@ ChordProg {
   *getHarmonicFunc {
     |key, scale, func, deg|
     var scaleChords = majorChords;
-    deg = (deg - 1).clip(0,6);
 
     if (scale == \minor) {
       scaleChords = minorChords;
@@ -182,11 +181,12 @@ ChordProg {
       Error("Wrong function!").throw;
     };
 
-    if ( functions[func].indexOfEqual(deg).isNil ) {
-      Error("Wrong degree!").throw;
+    if ( functions[func].indexOfEqual(degree).isNil ) {
+      "Wrong degree! return Rest instead".postln;
+      ^\r;
+    }{
+      ^scaleChords[key.asSymbol][ functions[func].indexOfEqual(degree) ];
     };
-
-    ^scaleChords[key.asSymbol][ functions[func].indexOfEqual(deg) ];
   }
 
   *getCircle {

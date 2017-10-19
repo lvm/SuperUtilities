@@ -194,7 +194,8 @@ ChordProg {
     /*
     if as_int, return position relative to root key
     -> \f = \c, \d
-    -> \f = -5, -4
+    -> \f = 12, 14
+    -> \f = 5th, 6th
     */
     var notes = circleof5th[key.asSymbol];
     ^if(as_int.isNil, {
@@ -206,9 +207,11 @@ ChordProg {
         var rel = chromatic.indexOfEqual(notes[i]);
         var n = 0;
         if(rel < root, {
-          n = (root - rel) * -1;
+          // n = (root - rel) * -1;
+          n = root + (12 - root + rel);
         }, {
-          n = rel - root;
+          // n = rel - root;
+          n = rel; // - root;
         });
         n;
       });
@@ -219,6 +222,7 @@ ChordProg {
     |key, chord|
     ^(chromatic.indexOfEqual(key.asSymbol)+chords[chord.asSymbol]);
   }
+
 
   *getProgList {
     ^progression.keys();

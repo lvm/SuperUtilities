@@ -23,8 +23,24 @@ A simple Chord Progression class.
 ### Usage
 
 ```
-ChordProg.getMajorProg(\a, \pop);
+ChordProg.getCircle(\c);
+
+ChordProg.getChord(\c, \maj);
+
+ChordProg.getInversion(\c, \maj);
+
+ChordProg.getMajorProg(\c, \pop);
+
 ChordProg.getMinorProg(\c, \blues);
+
+(
+// 1, 3, 5, 6, 7
+[0,2,4,5,6].do { 
+  |x|
+  ChordProg.getHarmonicFunc(\c, \major, \tonic, x).postln;
+}
+)
+
 ```
 
 ## Aconnect.sc

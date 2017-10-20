@@ -113,6 +113,7 @@ ChordProg {
 
   }
 
+  /***
   *buildScale {
     |key, scale, formula|
     var i, x;
@@ -158,6 +159,7 @@ ChordProg {
     var formula = [2,1,2,2,1,2,2];
     ^this.pickChords(key, this.buildScale(key, scale, formula), n_chords);
   }
+  ***/
 
   *getMajorProg {
     |key, prog|
@@ -190,15 +192,15 @@ ChordProg {
   }
 
   *getCircle {
-    |key, as_int|
+    |key, as_notes=nil|
     /*
-    if as_int, return position relative to root key
+    if as_notes, return position relative to root key
     -> \f = \c, \d
     -> \f = 12, 14
     -> \f = 5th, 6th
     */
     var notes = circleof5th[key.asSymbol];
-    ^if(as_int.isNil, {
+    ^if(as_notes.isNil.not, {
       notes
     }, {
       Array.fill(notes.size, {
@@ -219,9 +221,9 @@ ChordProg {
   }
 
   *getChord {
-    |key, chord, as_int|
+    |key, chord, as_notes=nil|
     var notes = (chromatic.indexOfEqual(key.asSymbol)+chords[chord.asSymbol]);
-    ^if( as_int.isNil ) {
+    ^if (as_notes.isNil.not) {
      notes.collect{|c|
         var n = if ( c > 11 ) {
           c - 12;
@@ -236,12 +238,12 @@ ChordProg {
   }
 
   *getInversion {
-    |key, chord, as_int|
+    |key, chord, as_notes=nil|
 
-    var basechord = ChordProg.getChord(key, chord);
+    var basechord = this.getChord(key, chord, true);
     var st = chromatic.indexOfEqual(key);
     var inv = Array.fill(basechord.size, { |x| basechord.rotate(basechord.size-x); });
-    ^if (as_int.isNil.not) {
+    ^if (as_notes.isNil) {
       Array.fill(inv.size, {
         |x|
         var bass_note = basechord[x];
@@ -267,7 +269,7 @@ ChordProg {
       // just return the notes in ABC notation
       inv;
     };
-  }
+}
 
   *getProgList {
     ^progression.keys();

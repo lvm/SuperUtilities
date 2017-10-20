@@ -219,10 +219,55 @@ ChordProg {
   }
 
   *getChord {
-    |key, chord|
-    ^(chromatic.indexOfEqual(key.asSymbol)+chords[chord.asSymbol]);
+    |key, chord, as_int|
+    var notes = (chromatic.indexOfEqual(key.asSymbol)+chords[chord.asSymbol]);
+    ^if( as_int.isNil ) {
+     notes.collect{|c|
+        var n = if ( c > 11 ) {
+          c - 12;
+        } {
+          c
+        };
+        chromatic[n];
+      };
+    } {
+      notes;
+    }
   }
 
+  *getInversion {
+    |key, chord, as_int|
+
+    var basechord = ChordProg.getChord(key, chord);
+    var st = chromatic.indexOfEqual(key);
+    var inv = Array.fill(basechord.size, { |x| basechord.rotate(basechord.size-x); });
+    ^if (as_int.isNil.not) {
+      Array.fill(inv.size, {
+        |x|
+        var bass_note = basechord[x];
+        var curr_chord = inv[x];
+        var curr_chrom = chromatic.rotate(-1*chromatic.indexOfEqual(bass_note));
+        var curr_st = chromatic.indexOfEqual( bass_note );
+        var octave_plus = if (st > curr_st) { 12 } { 0 }; // weird
+        /*
+        bass_note -> indicates the "lowest" note in the chord (aka the "new root")
+        curr_chord -> is the current chord, only really relevant from the 2nd towards the end
+        curr_chrom -> chromatic scale starting from the bass_note (rotates/shifts positions)
+        curr_st -> semitone index in the original chromatic scale (starting with C)
+        octave_plus -> adds 12 st or 0 st if the curr_st is lower than the original \key argument st
+        */
+
+        Array.fill(curr_chord.size, {
+          |y|
+          // st index of the bass_note + st index of the current chrome note + 12 or 0;
+          chromatic.indexOfEqual(bass_note) + curr_chrom.indexOfEqual( curr_chord[y] ) + octave_plus;
+        });
+      });
+    } {
+      // just return the notes in ABC notation
+      inv;
+    };
+  }
 
   *getProgList {
     ^progression.keys();

@@ -1,4 +1,4 @@
-SeqColExtras {
+PlusSequenceableCollection {
 
   *new {
     |input|
@@ -37,11 +37,11 @@ SeqColExtras {
 + SequenceableCollection {
 
   midiRange {
-    ^SeqColExtras.asMidiRange(this);
+    ^PlusSequenceableCollection.asMidiRange(this);
   }
 
   midiOctave {
-    ^SeqColExtras.asMidiOctave(this);
+    ^PlusSequenceableCollection.asMidiOctave(this);
   }
 
 }
@@ -55,7 +55,9 @@ http://kunstmusik.com/2017/10/20/hex-beats/
 + SequenceableCollection {
 
   hexBeat {
-    ^this.collect{ |hex| hex.asString.asList.collect{ |h| h.digit.asBinaryDigits(4) }.flat }.flat;
+    // ^this.collect{ |hex| hex.asString.asList.collect{ |h| h.digit.asBinaryDigits(4) }.flat }.flat;
+    ^this.collect{ |hex| hex.asString.asList.reject{ |c| [(0..9) ++ "abcdef".asList].flat.indexOfEqual(c).isNil }.collect{ |hex| hex.asString.asList.collect{ |h| h.digit.asBinaryDigits(4) }.flat; }.flat; }.flat;
+  }
   }
 
 }

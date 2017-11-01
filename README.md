@@ -41,6 +41,19 @@ ChordProg.getMinorProg(\c, \blues);
 }
 )
 
+// classic track
+(
+var chord = (
+  \c: \min,
+  \gs: \maj,
+  \a: \min,
+);
+[\c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a].collect{ 
+  |n|
+  ChordProg.getChord(n, chord[n])
+}.flat;
+)
+
 ```
 
 ## Aconnect.sc

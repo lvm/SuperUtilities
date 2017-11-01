@@ -55,9 +55,22 @@ http://kunstmusik.com/2017/10/20/hex-beats/
 + SequenceableCollection {
 
   hexBeat {
-    // ^this.collect{ |hex| hex.asString.asList.collect{ |h| h.digit.asBinaryDigits(4) }.flat }.flat;
-    ^this.collect{ |hex| hex.asString.asList.reject{ |c| ["0123456789abcdef".asList].flat.indexOfEqual(c).isNil }.collect{ |hex| hex.asString.asList.collect{ |h| h.digit.asBinaryDigits(4) }.flat; }.flat; }.flat;
-
+    ^this.collect{
+      |self|
+      // reject anything ouside hex valid numbers
+      self.asString.asList.reject{
+        |chr|
+        "0123456789abcdef".asList.indexOfEqual(chr).isNil;
+      }
+      .collect{
+        |hex|
+        // convert each character/number to a 4bits representation
+        hex.asString.asList.collect{
+          |h|
+          h.digit.asBinaryDigits(4)
+        };
+      };
+    }.flat;
   }
 
 }

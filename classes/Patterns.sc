@@ -54,35 +54,37 @@ Pswing {
 
 Pbindenmayer {
   *new {
-    |lsystem basepattern isDrum=false useKey|
+    |lsystem basepattern|
     var lsys = lsystem.asStream;
     var lindenmayer = Prout({
       |evt|
        while { evt.notNil } {
         var current = lsys.next;
-        var octave = 5;
-        var isDrum = false;
-        var curr;
+        var isPerc = false;
 
-        if (evt[\isDrum].isNil.not && evt[\isDrum].asBoolean) {
-          isDrum = true;
+        if (evt[\isPerc].isNil.not && evt[\isPerc].asBoolean) {
+          isPerc = true;
           current = [current].asGMPerc;
         };
 
         if (evt[\octave].isNil.not) {
-          octave = evt[\octave];
+          evt[\octave] = 5;
+        };
+
+        if (evt[\stut].isNil) {
+          evt[\stut] = 1;
         };
 
         if ((evt[\type].asSymbol == \midi) || (evt[\type].asSymbol == \md)) {
-          evt[\midinote] = current + (if(isDrum.asBoolean == false) { 12*octave } { 0 });
+          evt[\midinote] = current + (if(isPerc.asBoolean == false) { 12*evt[\octave] } { 0 });
         } {
           evt[\note] = current;
         };
 
         evt = evt.yield;
       }
-    });
+    }).stutter(Pkey(\stut));
 
-    ^Pchain(lindenmayer, basepattern, (isDrum: isDrum, useKey: useKey));
+    ^Pchain(lindenmayer, basepattern);
   }
 }

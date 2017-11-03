@@ -276,3 +276,39 @@ ChordProg {
     ^progression.keys();
   }
 }
+
+
++ SequenceableCollection {
+
+  asChord {
+    |chord|
+    ^this.collect{ |note| ChordProg.getChord(note, chord); };
+  }
+
+  asProgression {
+    |scale=\maj prog|
+    ^this.collect{
+      |note|
+      if (scale.asSymbol == \maj ) {
+        ChordProg.getMajorProg(note, prog);
+      } {
+        ChordProg.getMinProg(note, prog);
+      };
+    };
+  }
+
+  asChordInversion {
+    |chord|
+    ^this.collect{ |note| ChordProg.getInversion(note, chord); };
+  }
+
+  asHarmonicFunc {
+    |scale func deg|
+    ^this.collect{ |note| ChordProg.getHarmonicFunc(note, scale, func, deg); };
+  }
+
+  asCircleOf5 {
+    ^this.collect{ |note| ChordProg.getCircle(note); };
+  }
+
+}

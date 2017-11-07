@@ -74,3 +74,23 @@ http://kunstmusik.com/2017/10/20/hex-beats/
   }
 
 }
+
++ String {
+
+  hexBeat {
+    // reject anything ouside hex valid numbers
+    ^this.asList.reject{
+      |chr|
+      "0123456789abcdef".asList.indexOfEqual(chr).isNil;
+    }
+    .collect{
+      |hex|
+      // convert each character/number to a 4bits representation
+      hex.asString.asList.collect{
+        |h|
+        h.digit.asBinaryDigits(4)
+      };
+    }.flat;
+  }
+
+}

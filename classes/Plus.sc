@@ -1,4 +1,4 @@
-PlusSequenceableCollection {
+PlusUtilities {
 
   *new {
     |input|
@@ -31,55 +31,14 @@ PlusSequenceableCollection {
     };
   }
 
-}
-
-
-+ SequenceableCollection {
-
-  midiRange {
-    ^PlusSequenceableCollection.asMidiRange(this);
-  }
-
-  midiOctave {
-    ^PlusSequenceableCollection.asMidiOctave(this);
-  }
-
-}
-
-
-/*
-Based on Steven Yi's Hex Beats.
-http://kunstmusik.com/2017/10/20/hex-beats/
-*/
-
-+ SequenceableCollection {
-
-  hexBeat {
-    ^this.collect{
-      |self|
-      // reject anything ouside hex valid numbers
-      self.asString.asList.reject{
-        |chr|
-        "0123456789abcdef".asList.indexOfEqual(chr).isNil;
-      }
-      .collect{
-        |hex|
-        // convert each character/number to a 4bits representation
-        hex.asString.asList.collect{
-          |h|
-          h.digit.asBinaryDigits(4)
-        };
-      };
-    }.flat;
-  }
-
-}
-
-+ String {
-
-  hexBeat {
+  /*
+  Based on Steven Yi's Hex Beats.
+  http://kunstmusik.com/2017/10/20/hex-beats/
+  */
+  *hexBeat {
+    |beat|
     // reject anything ouside hex valid numbers
-    ^this.asList.reject{
+    ^beat.asList.reject{
       |chr|
       "0123456789abcdef".asList.indexOfEqual(chr).isNil;
     }
@@ -91,6 +50,32 @@ http://kunstmusik.com/2017/10/20/hex-beats/
         h.digit.asBinaryDigits(4)
       };
     }.flat;
+  }
+
+}
+
+
++ SequenceableCollection {
+
+  midiRange {
+    ^PlusUtilities.asMidiRange(this);
+  }
+
+  midiOctave {
+    ^PlusUtilities.asMidiOctave(this);
+  }
+
+  hexBeat {
+    ^PlusUtilities.hexBeat(this.asString).flat;
+  }
+
+}
+
+
++ String {
+
+  hexBeat {
+    ^PlusUtilities.hexBeat(this);
   }
 
 }

@@ -56,7 +56,7 @@ Repetition {
     item = item.asString.asList.collect(_.asString);
 
     if (item.indexOfEqual("!").isNil.not) {
-      item = item.asString.replace("!", "");
+      item = item.join.replace("!", "");
       parsed.put(idx, item.dup.collect(_.asSymbol));
     };
 

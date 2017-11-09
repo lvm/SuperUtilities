@@ -56,6 +56,38 @@ var chord = (
 
 ```
 
+## Repetition.sc
+
+        A class that returns (time + pattern) sequences, heavily inspired by TidalCycles.
+
+### Usage
+
+```       
+Repetition("[bd sn rm] cp").timePattern;        
+-> ( 'pattern': List[ bd, sn, rm, cp ], 'time': List[ 0.16666666666667, 0.16666666666667, 0.16666666666667, 0.5 ] );
+```
+
+And you can simulate a *really* basic TidalCycles stream with `density`/`slow` (`\stretch`) and `stutter` (faking it with `\stut` and `Pstutter`)  
+
+```        
+(        
+var notes = Repetition("0 [0 3] 7").timePattern;
+~fczr = Pbind(
+  \tempo, 55/60,
+  \type, \md,
+  \amp, 0.666,
+  \stretch, 1,
+  \stut, 1,
+  \dur, Pstutter(Pkey(\stut), Pseq(notes.time, inf)),
+  \octave, Pseq([3,4],inf),
+  \repnote, Pstutter(Pkey(\stut), Pseq(notes.pattern, inf) + (12 * Pkey(\octave))),
+  \midinote, Prout({ |e| loop { e = e[\repnote].asInt.yield } }),
+  \sustain, Pkey(\dur),
+  \chan, 2,      
+  );     
+)
+```
+
 ## Aconnect.sc
 
 A simple `aconnect` front end. Useful when you need to connect _other_ MIDI clients.

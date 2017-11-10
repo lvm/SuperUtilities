@@ -41,7 +41,7 @@ Repetition {
   }
 
   *initClass {
-    regexp = "([\\w!?(\\*\d+)? ]+|[\\[\\w!?(\\*\d+)? ]+\\]+)"
+    regexp = "([\\w!?@?(\\*\d+)? ]+|[\\[\\w!?@?(\\*\d+)? ]+\\]+)"
   }
 
   *uniq {
@@ -115,24 +115,26 @@ Repetition {
       this.split(pat).collect {
         |x|
         x = x.asString.split($ );
-        (time: ((1 / pat.size)).dup(x.size), pattern: x)
+        (amp: 1.dup(x.size), time: ((1 / pat.size)).dup(x.size), pattern: x)
       }
     }
   }
 
   *timePattern {
-    var time, patas;
+    var amp, time, patas;
     ^this.parse.collect{
       |pat|
+      amp = List.new;
       time = List.new;
       patas = List.new;
       pat.collect {
         |x|
+        x.amp.collect { |t| amp.add (t); } ;
         x.time.collect { |t| time.add (t); } ;
         x.pattern.collect { |p| patas.add (p) };
       };
 
-      (time: time.asArray.normalizeSum, pattern: patas);
+      (amp: amp.asArray, time: time.asArray.normalizeSum, pattern: patas.asArray);
     }
   }
 

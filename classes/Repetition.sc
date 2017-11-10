@@ -32,6 +32,11 @@ Repetition {
 
   *new {
     |pat|
+
+    if (pat.isKindOf(String)) {
+      pat = [pat];
+    };
+
     pattern = pat;
   }
 
@@ -76,7 +81,8 @@ Repetition {
   }
 
   *split {
-    var pat = pattern.asString.findRegexp(regexp)
+    |pat|
+    pat = pat.asString.findRegexp(regexp)
     .collect(_[1])
     .collect(_.stripWhiteSpace)
     .asList
@@ -104,25 +110,30 @@ Repetition {
   }
 
   *parse {
-    var p = this.split;
-    var pat, time;
-
-    ^p.collect {
-      |x|
-      x = x.asString.split($ );
-      (time: ((1 / p.size) / x.size).dup(x.size), pattern: x)
+    ^pattern.collect {
+      |pat|
+      this.split(pat).collect {
+        |x|
+        x = x.asString.split($ );
+        (time: ((1 / pat.size)).dup(x.size), pattern: x)
+      }
     }
   }
 
   *timePattern {
-    var time = List.new, patas = List.new;
-    this.parse.collect {
-      |x|
-      x.time.collect { |t| time.add (t); } ;
-      x.pattern.collect { |p| patas.add (p) };
-    };
+    var time, patas;
+    ^this.parse.collect{
+      |pat|
+      time = List.new;
+      patas = List.new;
+      pat.collect {
+        |x|
+        x.time.collect { |t| time.add (t); } ;
+        x.pattern.collect { |p| patas.add (p) };
+      };
 
-    ^(time: time, pattern: patas);
+      (time: time.asArray.normalizeSum, pattern: patas);
+    }
   }
 
 }

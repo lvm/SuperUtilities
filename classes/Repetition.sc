@@ -53,11 +53,13 @@ Repetition {
 
   *maybeRepeatLast {
     |item idx|
+    var bang;
     item = item.asString.asList.collect(_.asString);
+    bang = item.indexOfEqual("!");
 
-    if (item.indexOfEqual("!").isNil.not) {
-      item = item.join.replace("!", "");
-      parsed.put(idx, item.dup.collect(_.asSymbol));
+    if (bang.isNil.not) {
+      item = item.put(bang, item[bang-1]).reject { |x| x.stripWhiteSpace.size < 1 };
+      parsed.put(idx, item.join(" ").asSymbol);
     };
 
     if (item.indexOfEqual("*").isNil.not) {

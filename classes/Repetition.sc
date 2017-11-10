@@ -58,8 +58,14 @@ Repetition {
     bang = item.indexOfEqual("!");
 
     if (bang.isNil.not) {
-      item = item.put(bang, item[bang-1]).reject { |x| x.stripWhiteSpace.size < 1 };
-      parsed.put(idx, item.join(" ").asSymbol);
+      item
+      .collect {
+        |chr, i|
+        if (chr == "!") {
+          item[i] = " " ++ item[i-1];
+        }
+      };
+      parsed.put(idx, item.join.asSymbol);
     };
 
     if (item.indexOfEqual("*").isNil.not) {

@@ -114,8 +114,10 @@ Repetition {
       |pat|
       this.split(pat).collect {
         |x|
+        var amp;
         x = x.asString.split($ );
-        (amp: 1.dup(x.size), time: ((1 / pat.size)).dup(x.size), pattern: x)
+        amp = x.collect { |y| if (y.contains("@")) { 0.5 } { 0 } };
+        (amp: (amp + 0.5), time: ((1 / pat.size)).dup(x.size), pattern: x.collect { |y| y.replace("@", ""); })
       }
     }
   }
@@ -129,7 +131,7 @@ Repetition {
       patas = List.new;
       pat.collect {
         |x|
-        x.amp.collect { |t| amp.add (t); } ;
+        x.amp.collect { |a| amp.add (a); } ;
         x.time.collect { |t| time.add (t); } ;
         x.pattern.collect { |p| patas.add (p) };
       };

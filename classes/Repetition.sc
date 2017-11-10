@@ -58,26 +58,32 @@ Repetition {
 
   *maybeRepeatLast {
     |item idx|
-    var bang;
-    item = item.asString.asList.collect(_.asString);
-    bang = item.indexOfEqual("!");
+    var curr = item.asArray; // in case item doesn't have *N or !
+    item = item.asString;
 
-    if (bang.isNil.not) {
-      item
-      .collect {
-        |chr, i|
-        if (chr == "!") {
-          item[i] = " " ++ item[i-1];
+    if (item.contains("!")) {
+      curr = item.split($ ).collect{
+        |i|
+        if (i.contains("!")) {
+          i.replace("!", "").dup.join(" ")
+        } {
+          i
         }
-      };
-      parsed.put(idx, item.join.asSymbol);
+      }
     };
 
-    if (item.indexOfEqual("*").isNil.not) {
-      item = item.join.split($*);
-      parsed.put(idx, item[0].dup(item[1].asInt).collect(_.asSymbol));
-    }
-
+    if (item.contains("*")) {
+      curr = item.split($ ).collect{
+        |i|
+        if (i.contains("*")) {
+          i = i.split($*);
+          i[0].dup(i[1].asInt).join(" ");
+        } {
+          i
+        }
+      }
+    };
+    ^curr.join(" ").asSymbol;
   }
 
   *split {
@@ -92,19 +98,18 @@ Repetition {
     .uniq(pat)
     .collect {
       |x|
-      if (x.asList.collect(_.asString).indexOfEqual("[").isNil) {
+      if (x.includesAny("[]").not) {
         x.split($ ).collect(_.asSymbol);
       } {
         x.replace("[", "").replace("]", "").asSymbol;
       }
     }
     .flat
-    ;
-
-    parsed.collect {
+    .collect {
       |x, i|
       this.maybeRepeatLast(x, i);
-    };
+    }
+    ;
 
     ^parsed.flat;
   }
@@ -114,10 +119,11 @@ Repetition {
       |pat|
       this.split(pat).collect {
         |x|
-        var amp;
+        var amp, size;
         x = x.asString.split($ );
+        size = x.size;
         amp = x.collect { |y| if (y.contains("@")) { 0.5 } { 0 } };
-        (amp: (amp + 0.5), time: ((1 / pat.size)).dup(x.size), pattern: x.collect { |y| y.replace("@", ""); })
+        (amp: (amp + 0.5), time: ((1/size)).dup(size), pattern: x.collect { |y| y.replace("@", ""); })
       }
     }
   }

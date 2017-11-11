@@ -4,50 +4,188 @@
         (c)opyleft 2017 by Mauro <mauro@sdf.org>
         http://cyberpunk.com.ar/
 
-        A class that returns (time + pattern) sequences, heavily inspired by TidalCycles.
+        *Heavily* inspired by TidalCycles. Consider this a (tiny) dialect that implements some of its features.
 
-        Example:
-        Repetition("[bd sn rm] cp").timePattern;
-        -> ( 'pattern': List[ bd, sn, rm, cp ], 'time': List[ 0.16666666666667, 0.16666666666667, 0.16666666666667, 0.5 ] );
+        So far, i've implemented only these possibilities:
+        * Polyrhythms: "a | b"
+        * Groups: "a+b"
+        * Accents: "a@"
+        * Repetition: "a!"
+        * Multiplication: "a*N" (N -> Int)
 
+        All of this is "chainable".
+
+        Examples:
+
+        A fairly complex pattern:
+        "bd*3 | hq@+sn rm@! cp@".parseRepetitionPattern;
+
+        Is converted to:
+        -> [
+            ( 'pattern': [ bd, bd, bd ],
+              'amp': [ 0.75, 0.75, 0.75 ],
+              'dur': [ 0.33333333333333, 0.33333333333333, 0.33333333333333 ]
+            ),
+            ( 'pattern': [ hq, sn, rm, rm, cp ],
+              'amp': [ 0.95, 0.75, 0.95, 0.95, 0.95 ],
+              'dur': [ 0.125, 0.125, 0.25, 0.25, 0.25 ]
+            )
+           ]
+
+        A polymeter:
+        x = "5@ x*4 | 4@ x*3".parseRepetitionPattern
+        -> [
+            ( 'pattern': [ 5, x, x, x, x ],
+              'amp': [ 0.95, 0.75, 0.75, 0.75, 0.75 ],
+              'dur': [ 0.2, 0.2, 0.2, 0.2, 0.2 ]
+            ),
+            ( 'pattern': [ 4, x, x, x ],
+              'amp': [ 0.95, 0.75, 0.75, 0.75 ],
+              'dur': [ 0.25, 0.25, 0.25, 0.25 ]
+            )
+           ]
+
+        To "see" what's going on, it's possible to:
+        x[0].pattern.dup(4).flat;
+        x[1].pattern.dup(5).flat;
+        -> [ 5, x, x, x, x, 5, x, x, x, x, 5, x, x, x, x, 5, x, x, x, x ]
+        -> [ 4, x, x, x, 4, x, x, x, 4, x, x, x, 4, x, x, x, 4, x, x, x ]
+
+        A much more simple Pbind:
         (
-        var notes = Repetition("0 [0 3] 7").timePattern;
-        ~fczr = Pbind(
-          \tempo, 55/60,
+        var notes = "0 0+3 7".parseRepetitionPattern.pop;
+        ~test = Pbind(
+          \tempo, 60/60,
           \type, \md,
-          \amp, 0.666,
-          \dur, Pseq(notes.time, inf),
-          \repnote, Pseq(notes.pattern, inf) + 60,
-          \midinote, Prout({ |e| loop { e = e[\repnote].asInt.yield } }) + 60,
+          \amp, Pseq(notes.amp, inf),
+          \dur, Pseq(notes.dur, inf),
+          \midinote, Pseq(notes.pattern.collect(_.asInt), inf) + 60,
           \sustain, Pkey(\dur),
           \chan, 2,
         );
         )
+
+        That is equivalent to (it always returns a list, hence .pop):
+        -> [
+            ( 'pattern': [ 0, 0, 3, 7 ],
+              'amp': [ 0.75, 0.75, 0.75, 0.75 ],
+              'dur': [ 0.33333333333333, 0.16666666666667, 0.16666666666667, 0.33333333333333 ]
+            )
+           ]
+
 */
 
-Repetition {
-  classvar <pattern;
-  classvar <regexp;
-  classvar <parsed;
+Repetition { }
 
-  *new {
-    |pat|
++ Symbol {
 
-    if (pat.isKindOf(String)) {
-      pat = [pat];
+  maybeRepeat {
+    var item = this.asString;
+
+    if (item.contains("!")) {
+      item = item.split($ ).collect{
+        |i|
+        if (i.contains("!")) {
+          i.replace("!", "").dup.join(" ")
+        } {
+          i
+        }
+      }.join(" ")
     };
 
-    pattern = pat;
+    if (item.contains("*")) {
+      item = item.split($ ).collect{
+        |i|
+        if (i.contains("*")) {
+          i = i.split($*);
+          i[0].dup(i[1].asInt).join(" ");
+        } {
+          i
+        }
+      }.join(" ")
+    };
+
+    ^item.asSymbol;
   }
 
-  *initClass {
-    regexp = "([\\w!?@?(\\*\d+)? ]+|[\\[\\w!?@?(\\*\d+)? ]+\\]+)"
+
+  maybeSplit {
+    |sep|
+    var item = this;
+
+    if (item.isKindOf(String)) {
+      item = item.split(sep);
+    };
+
+    ^item;
   }
 
-  *uniq {
-    |arr|
+  distributeInTime {
+    var amp, size, dur, time;
+    var pattern = this.asString;
+    var xpattern;
+
+    pattern = pattern.split($ ).reject { |x| x.asString.size < 1 };
+    size = pattern.size;
+    time = 1/size;
+    pattern = pattern.collect(_.maybeSubdivide);
+    dur = pattern.collect{ |sub| if (sub.isKindOf(String)) { time; } { (time/sub.size).dup(sub.size); } };
+    amp = pattern.collect{ |sub| if (sub.isKindOf(String)) { sub.maybeAccent; } { sub.collect(_.maybeAccent) } };
+    pattern = pattern.collect{ |sub| if (sub.isKindOf(String)) { sub.maybeCleanUp; } { sub.collect(_.maybeCleanUp) } };
+
+    ^(
+      amp: (amp.flat + 0.75),
+      dur: dur.flat,
+      pattern: pattern.flat,
+    )
+  }
+
+}
+
++ String {
+
+  maybeCleanUp {
+    ^this.replace("@", "").asSymbol;
+  }
+
+  maybeAccent {
+    ^if (this.contains("@")) { 0.2 } { 0 }
+  }
+
+  maybeSubdivide {
+    var item = this;
+
+    if (item.contains("+")) {
+      item = item.split($+);
+    };
+
+    ^item;
+  }
+
+  parseRepetitionPattern {
+    var regexp = "([\\w!?@?\\+?(\\*\d+)? ]+)";
+
+    ^this
+    .asString
+    .findRegexp(regexp)
+    .collect(_[1])
+    .collect(_.stripWhiteSpace)
+    .uniq
+    .collect(_.flat)
+    .collect(_.asSymbol)
+    .collect(_.maybeRepeat)
+    .collect(_.maybeSplit)
+    .collect(_.distributeInTime)
+    ;
+  }
+
+}
+
++ SequenceableCollection {
+
+  uniq {
     var result = List.new;
-    arr.do{
+    this.do{
       |item|
       if (result.indexOfEqual(item).isNil) {
         result.add( item );
@@ -56,94 +194,8 @@ Repetition {
     ^result.asArray;
   }
 
-  *maybeRepeatLast {
-    |item idx|
-    var curr = item.asArray; // in case item doesn't have *N or !
-    item = item.asString;
-
-    if (item.contains("!")) {
-      curr = item.split($ ).collect{
-        |i|
-        if (i.contains("!")) {
-          i.replace("!", "").dup.join(" ")
-        } {
-          i
-        }
-      }
-    };
-
-    if (item.contains("*")) {
-      curr = item.split($ ).collect{
-        |i|
-        if (i.contains("*")) {
-          i = i.split($*);
-          i[0].dup(i[1].asInt).join(" ");
-        } {
-          i
-        }
-      }
-    };
-    ^curr.join(" ").asSymbol;
-  }
-
-  *split {
-    |pat|
-    pat = pat.asString.findRegexp(regexp)
-    .collect(_[1])
-    .collect(_.stripWhiteSpace)
-    .asList
-    ;
-
-    parsed = this
-    .uniq(pat)
-    .collect {
-      |x|
-      if (x.includesAny("[]").not) {
-        x.split($ ).collect(_.asSymbol);
-      } {
-        x.replace("[", "").replace("]", "").asSymbol;
-      }
-    }
-    .flat
-    .collect {
-      |x, i|
-      this.maybeRepeatLast(x, i);
-    }
-    ;
-
-    ^parsed.flat;
-  }
-
-  *parse {
-    ^pattern.collect {
-      |pat|
-      this.split(pat).collect {
-        |x|
-        var amp, size;
-        x = x.asString.split($ );
-        size = x.size;
-        amp = x.collect { |y| if (y.contains("@")) { 0.5 } { 0 } };
-        (amp: (amp + 0.5), time: ((1/size)).dup(size), pattern: x.collect { |y| y.replace("@", ""); })
-      }
-    }
-  }
-
-  *timePattern {
-    var amp, time, patas;
-    ^this.parse.collect{
-      |pat|
-      amp = List.new;
-      time = List.new;
-      patas = List.new;
-      pat.collect {
-        |x|
-        x.amp.collect { |a| amp.add (a); } ;
-        x.time.collect { |t| time.add (t); } ;
-        x.pattern.collect { |p| patas.add (p) };
-      };
-
-      (amp: amp.asArray, time: time.asArray.normalizeSum, pattern: patas.asArray);
-    }
+  parseRepetitionCollection {
+    ^this.collect(_.parseRepetitionPattern);
   }
 
 }

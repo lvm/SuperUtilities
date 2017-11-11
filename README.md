@@ -58,35 +58,85 @@ var chord = (
 
 ## Repetition.sc
 
-        A class that returns (time + pattern) sequences, heavily inspired by TidalCycles.
+*Heavily* inspired by TidalCycles. Consider this a (tiny) dialect that implements some of its features.
+
+So far, i've implemented only these possibilities:
+
+* Polyrhythms: `a | b`
+* Groups: `a+b`
+* Accents: `a@`
+* Repetition: `a!`
+* Multiplication: `a*N` (`N` -> Int)
+
+All of this is "chainable".
 
 ### Usage
 
-```       
-Repetition("[bd sn rm] cp").timePattern;        
--> ( 'pattern': List[ bd, sn, rm, cp ], 'time': List[ 0.16666666666667, 0.16666666666667, 0.16666666666667, 0.5 ] );
+A fairly complex pattern:
+```
+        "bd*3 | hq@+sn rm@! cp@".parseRepetitionPattern;
+        -> [
+            ( 'pattern': [ bd, bd, bd ],
+              'amp': [ 0.75, 0.75, 0.75 ],
+              'dur': [ 0.33333333333333, 0.33333333333333, 0.33333333333333 ]
+            ),
+            ( 'pattern': [ hq, sn, rm, rm, cp ],
+              'amp': [ 0.95, 0.75, 0.95, 0.95, 0.95 ],
+              'dur': [ 0.125, 0.125, 0.25, 0.25, 0.25 ]
+            )
+           ]
 ```
 
-And you can simulate a *really* basic TidalCycles stream with `density`/`slow` (`\stretch`) and `stutter` (faking it with `\stut` and `Pstutter`)  
+A polymeter:
+```
+        x = "5@ x*4 | 4@ x*3".parseRepetitionPattern
+        -> [
+            ( 'pattern': [ 5, x, x, x, x ],
+              'amp': [ 0.95, 0.75, 0.75, 0.75, 0.75 ],
+              'dur': [ 0.2, 0.2, 0.2, 0.2, 0.2 ]
+            ),
+            ( 'pattern': [ 4, x, x, x ],
+              'amp': [ 0.95, 0.75, 0.75, 0.75 ],
+              'dur': [ 0.25, 0.25, 0.25, 0.25 ]
+            )
+           ]
+```
 
+To "see" what's going on, it's possible to:
+```
+        x[0].pattern.dup(4).flat;
+        x[1].pattern.dup(5).flat;
+        -> [ 5, x, x, x, x, 5, x, x, x, x, 5, x, x, x, x, 5, x, x, x, x ]
+        -> [ 4, x, x, x, 4, x, x, x, 4, x, x, x, 4, x, x, x, 4, x, x, x ]
+```
+
+A much more simple Pbind:
+```
+        (
+        var notes = "0 0+3 7".parseRepetitionPattern.pop;
+        ~test = Pbind(
+          \tempo, 60/60,
+          \type, \md,
+          \amp, Pseq(notes.amp, inf),
+          \dur, Pseq(notes.dur, inf),
+          \midinote, Pseq(notes.pattern.collect(_.asInt), inf) + 60,
+          \sustain, Pkey(\dur),
+          \chan, 2,
+        );
+        )
+```
+
+That is equivalent to this:   
+Note: it always returns a list, hence `.pop` :-)
+```
+        -> [
+            ( 'pattern': [ 0, 0, 3, 7 ],
+              'amp': [ 0.75, 0.75, 0.75, 0.75 ],
+              'dur': [ 0.33333333333333, 0.16666666666667, 0.16666666666667, 0.33333333333333 ]
+            )
+           ]
 ```        
-(        
-var notes = Repetition("0 [0 3] 7").timePattern;
-~fczr = Pbind(
-  \tempo, 55/60,
-  \type, \md,
-  \amp, 0.666,
-  \stretch, 1,
-  \stut, 1,
-  \dur, Pstutter(Pkey(\stut), Pseq(notes.time, inf)),
-  \octave, Pseq([3,4],inf),
-  \repnote, Pstutter(Pkey(\stut), Pseq(notes.pattern, inf) + (12 * Pkey(\octave))),
-  \midinote, Prout({ |e| loop { e = e[\repnote].asInt.yield } }),
-  \sustain, Pkey(\dur),
-  \chan, 2,      
-  );     
-)
-```
+
 
 ## Aconnect.sc
 

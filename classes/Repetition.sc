@@ -121,22 +121,21 @@ Repetition { }
   }
 
   distributeInTime {
-    var amp, size, dur, time;
+    var acc, size, dur, time;
     var pattern = this.asString;
-    var xpattern;
 
     pattern = pattern.split($ ).reject { |x| x.asString.size < 1 };
     size = pattern.size;
-    time = 1/size;
+    dur = 1/size;
     pattern = pattern.collect(_.maybeSubdivide);
-    dur = pattern.collect{ |sub| if (sub.isKindOf(String)) { time; } { (time/sub.size).dup(sub.size); } };
-    amp = pattern.collect{ |sub| if (sub.isKindOf(String)) { sub.maybeAccent; } { sub.collect(_.maybeAccent) } };
+    time = pattern.collect{ |sub| if (sub.isKindOf(String)) { dur; } { (dur/sub.size).dup(sub.size); } };
+    acc = pattern.collect{ |sub| if (sub.isKindOf(String)) { sub.maybeAccent; } { sub.collect(_.maybeAccent) } };
     pattern = pattern.collect{ |sub| if (sub.isKindOf(String)) { sub.maybeCleanUp; } { sub.collect(_.maybeCleanUp) } };
 
     ^(
-      amp: (amp.flat + 0.75),
-      dur: dur.flat,
-      pattern: pattern.flat,
+      accent: acc.flat.asStream,
+      time: time.flat.asStream,
+      pattern: pattern.flat.asStream,
     )
   }
 

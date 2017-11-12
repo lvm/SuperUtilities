@@ -35,7 +35,7 @@ ChordProg.getMinorProg(\c, \blues);
 
 (
 // 1, 3, 5, 6, 7
-[0,2,4,5,6].do { 
+[0,2,4,5,6].do {
   |x|
   ChordProg.getHarmonicFunc(\c, \major, \tonic, x).postln;
 }
@@ -48,7 +48,7 @@ var chord = (
   \gs: \maj,
   \a: \min,
 );
-[\c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a].collect{ 
+[\c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a].collect{
   |n|
   ChordProg.getChord(n, chord[n])
 }.flat;
@@ -77,12 +77,12 @@ A fairly complex pattern:
         "bd*3 | hq@+sn rm@! cp@".parseRepetitionPattern;
         -> [
             ( 'pattern': [ bd, bd, bd ],
-              'amp': [ 0.75, 0.75, 0.75 ],
-              'dur': [ 0.33333333333333, 0.33333333333333, 0.33333333333333 ]
+              'accent': [ 0, 0, 0 ],
+              'time': [ 0.33333333333333, 0.33333333333333, 0.33333333333333 ]
             ),
             ( 'pattern': [ hq, sn, rm, rm, cp ],
-              'amp': [ 0.95, 0.75, 0.95, 0.95, 0.95 ],
-              'dur': [ 0.125, 0.125, 0.25, 0.25, 0.25 ]
+              'accent': [ 0.25, 0, 0.25, 0.25, 0.25 ],
+              'time': [ 0.125, 0.125, 0.25, 0.25, 0.25 ]
             )
            ]
 ```
@@ -92,12 +92,12 @@ A polymeter:
         x = "5@ x*4 | 4@ x*3".parseRepetitionPattern
         -> [
             ( 'pattern': [ 5, x, x, x, x ],
-              'amp': [ 0.95, 0.75, 0.75, 0.75, 0.75 ],
-              'dur': [ 0.2, 0.2, 0.2, 0.2, 0.2 ]
+              'accent': [ 0.25, 0, 0, 0, 0 ],
+              'time': [ 0.2, 0.2, 0.2, 0.2, 0.2 ]
             ),
             ( 'pattern': [ 4, x, x, x ],
-              'amp': [ 0.95, 0.75, 0.75, 0.75 ],
-              'dur': [ 0.25, 0.25, 0.25, 0.25 ]
+              'accent': [ 0.25, 0, 0, 0 ],
+              'time': [ 0.25, 0.25, 0.25, 0.25 ]
             )
            ]
 ```
@@ -117,8 +117,8 @@ A much more simple Pbind:
         ~test = Pbind(
           \tempo, 60/60,
           \type, \md,
-          \amp, Pseq(notes.amp, inf),
-          \dur, Pseq(notes.dur, inf),
+          \amp, Pseq(notes.amp, inf) + 0.75,
+          \dur, Pseq(notes.time, inf),
           \midinote, Pseq(notes.pattern.collect(_.asInt), inf) + 60,
           \sustain, Pkey(\dur),
           \chan, 2,
@@ -126,16 +126,16 @@ A much more simple Pbind:
         )
 ```
 
-That is equivalent to this:   
+That is equivalent to this:
 Note: it always returns a list, hence `.pop` :-)
 ```
         -> [
             ( 'pattern': [ 0, 0, 3, 7 ],
-              'amp': [ 0.75, 0.75, 0.75, 0.75 ],
-              'dur': [ 0.33333333333333, 0.16666666666667, 0.16666666666667, 0.33333333333333 ]
+              'accent': [ 0, 0, 0, 0 ],
+              'time': [ 0.33333333333333, 0.16666666666667, 0.16666666666667, 0.33333333333333 ]
             )
            ]
-```        
+```
 
 
 ## Aconnect.sc
@@ -189,10 +189,10 @@ Events types for MIDIOut Patterns.
 ```
 ~midiOut = MIDIOut.newByName("...", "...");
 MidiEvents(~midiOut);
-        
+
 (\type, \md, \midinote, Pseq((60..72),inf).play;
 (\type, \cc, \control, Pseq((0..127),inf).play;
-```        
+```
 
 ## Tidal.sc
 

@@ -57,8 +57,8 @@
         ~test = Pbind(
           \tempo, 60/60,
           \type, \md,
-          \amp, Pseq(notes.amp, inf),
-          \dur, Pseq(notes.dur, inf),
+          \amp, Pseq(notes.amp, inf) + 0.75,
+          \dur, Pseq(notes.time, inf),
           \midinote, Pseq(notes.pattern.collect(_.asInt), inf) + 60,
           \sustain, Pkey(\dur),
           \chan, 2,

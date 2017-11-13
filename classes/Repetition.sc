@@ -91,6 +91,7 @@
         Finally, each dict has `cb`, which is basically a _callback_ over the current note being played.
 
 
+        Other features:
         Callbacks
 
         It affects the current event (from pattern) and applies a certain function:
@@ -108,6 +109,46 @@
 
         Which will be rendered as:
         Cmin, DMaj, EMaj7
+
+
+        Bjorklund / Euclidean Rhythm:
+
+        Repetition isn't flexible as Tidal itself but taking advantage of the `Bjorklund` Quark, we are able
+        to generate Strings that represent the same rhythm. The valid args are `k` which represents the amount of
+        notes distributed in `n` places, and `rotate` which will shift positions.
+        For example:
+        "bd".asBjorklund(4, 16).quote;
+        -> "bd r r r bd r r r bd r r r bd r r r"
+
+        "bd".asBjorklund(4, 16, 2).quote;
+        -> "r r bd r r r bd r r r bd r r r bd r"
+
+        Additionally, it's possible to pass more than one 'symbol' as a Bjorklund pattern, such as "sn rm", which
+        is converted to a group, "sn+rm", therefore creating a _longer_ pattern but maintaining the same duration.
+        For example:
+        "bd sn".asBjorklund(1,4).parseRepetitionPattern
+        -> "bd+sn r r r"
+        -> [
+            ( 'pattern': [ bd, sn, r, r, r ],
+              'time': [ 0.125, 0.125, 0.25, 0.25, 0.25 ],
+              'accent': [ 0, 0, 0, 0, 0 ]
+            )
+           ]
+
+        So, instead of dividing each value by the total amount (1/5), it's divided by 1/4 and the group by the amount
+        of items in it (1/2). This can be seen clearly in the 'time' Array.
+
+        An example chaining Bjorklund/Euclidean rhythms:
+        (
+        var pbd = (tempo: 60/60, type: \md, amp: 0.75, chan: 9, cb: \asPerc);
+        var pat = ("bd".asBjorklund(3,8))+"| r r r sn r r | r ch ch@ ch |"+("rm".asBjorklund(5,8))+"|cp";
+        var t8 = pat.parseRepetitionPattern;
+        ~t80 = t8.at(0).asPbind(pbd);
+        ~t81 = t8.at(1).asPbind(pbd);
+        ~t82 = t8.at(2).asPbind(pbd);
+        ~t83 = t8.at(3).asPbind(pbd);
+        ~t84 = t8.at(4).asPbind(pbd);
+        )
 
 */
 
@@ -265,12 +306,22 @@ Prepetition {
 
 + String {
 
+  // requires `Bjorklund` Quark.
+  asBjorklund {
+    |k, n, rotate=0|
+    ^Bjorklund(k, n)
+    .rotate(rotate)
+    .collect { |p| if (p.asBoolean) { this.replace(" ", "+").asSymbol } { \r } }
+    .flat.join(" ")
+    ;
+  }
+
   maybeCleanUp {
     ^this.replace("@", "").asSymbol;
   }
 
   maybeAccent {
-    ^if (this.contains("@")) { 0.2 } { 0 }
+    ^if (this.contains("@")) { 0.25 } { 0 }
   }
 
   maybeSubdivide {
@@ -306,7 +357,6 @@ Prepetition {
 
   asPbind {
     |dict|
-    dict.postln;
     ^Pchain(Prepetition(), Pbind(*this.blend(dict).getPairs));
   }
 

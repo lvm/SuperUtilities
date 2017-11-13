@@ -78,10 +78,10 @@ PlusUtilities {
     ^PlusUtilities.hexBeat(this);
   }
 
-  // requires Bjorklund Quark.
-  asBjorklund {
-    |k,n|
-    ^Bjorklund(k,n).collect { |p| if (p.asBoolean) { this.asSymbol } { \r } };
-  }
+  // // requires Bjorklund Quark.
+  // asBjorklund {
+  //   |k,n|
+  //   ^Bjorklund(k,n).collect { |p| if (p.asBoolean) { this.asSymbol } { \r } };
+  // }
 
 }

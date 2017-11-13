@@ -60,7 +60,7 @@
 
         That is equivalent to:
         (
-        var notes = "0 0+3 7".parseRepetitionPattern;
+        var notes = "0 0+3 7".parseRepetitionPattern.pop;
         ~x = Pbind(
           \tempo, 60/60,
           \type, \md,

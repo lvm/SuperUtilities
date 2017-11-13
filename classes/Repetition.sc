@@ -91,6 +91,23 @@
         Finally, each dict has `cb`, which is basically a _callback_ over the current note being played.
 
 
+        Another example using `ChordProg`. Patterns can be built from arrays aswell.
+        (
+        var chord = (
+          \c: \min,
+          \gs: \maj,
+          \a: \min,
+        );
+        var p = [\c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a].collect{
+          |n|
+          ChordProg.getChord(n, chord[n])
+        }.flat.join(" ");
+        var pbd = (tempo: 60/60, cb: \asInt, chan: 4, stretch: 26, type: \md, amp: 0.8);
+        var polc = p.parseRepetitionPattern;
+        ~poly = polc.at(0).asPbind(pbd);
+        )
+
+
         Other features:
         Callbacks
 
@@ -109,7 +126,6 @@
 
         Which will be rendered as:
         Cmin, DMaj, EMaj7
-
 
         Bjorklund / Euclidean Rhythm:
 
@@ -231,7 +247,11 @@ Prepetition {
       },
       // Requires `ChordProg`
       \asChord, {
-        sym = [sym].asChord(evt[\chord] ?? \maj).flat;
+        if (sym.asSymbol.isRest) {
+          sym = \rest;
+        } {
+          sym = [sym].asChord(evt[\chord] ?? \maj).flat;
+        }
       },
       // Requires `PercSymbol`
       \asPerc, {

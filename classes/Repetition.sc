@@ -51,10 +51,17 @@
         -> [ 5, x, x, x, x, 5, x, x, x, x, 5, x, x, x, x, 5, x, x, x, x ]
         -> [ 4, x, x, x, 4, x, x, x, 4, x, x, x, 4, x, x, x, 4, x, x, x ]
 
-        A much more simple Pbind:
+
+        A simple Pbind:
         (
-        var notes = "0 0+3 7".parseRepetitionPattern.pop;
-        ~test = Pbind(
+        var notes = "0 0+3 7".parseRepetitionPattern;
+        ~x = notes.at(0).asPbind((tempo: 60/60, type: \md, chan: 2, amp: 0.75));
+        )
+
+        That is equivalent to:
+        (
+        var notes = "0 0+3 7".parseRepetitionPattern;
+        ~x = Pbind(
           \tempo, 60/60,
           \type, \md,
           \amp, Pseq(notes.amp, inf) + 0.75,
@@ -65,19 +72,134 @@
         );
         )
 
-        That is equivalent to (it always returns a list, hence .pop):
-        -> [
-            ( 'pattern': [ 0, 0, 3, 7 ],
-              'accent': [ 0, 0, 0, 0 ],
-              'time': [ 0.33333333333333, 0.16666666666667, 0.16666666666667, 0.33333333333333 ]
-            )
-           ]
+        Another a bit more complex Pbind example:
+        (
+        var pbd = (tempo: 60/60, type: \md, amp: 0.5);
+        var drum = pbd.blend((chan: 9, cb: \asPerc));
+        var test = "bd sn | ch*3 | 0@ 4 7 0 9 0".parseRepetitionPattern;
+        ~q = test.at(0).asPbind(drum.blend((stut: 2)));
+        ~w = test.at(1).asPbind(drum.blend((stretch: Pseq([1,1/4,1/2,2].stutter(4),inf))));
+        ~e = test.at(2).asPbind(pbd.blend((chan: 4, octave: Pseq([3,4,5],inf), cb: \asInt, amp: 0.7)));
+        )
+
+        In which I defined a dict, `pbd`, which later is blended with `drum` another dict which defines a
+        midi channel. Later on, `drum` is blended once again with different settings, once using `stut`
+        that internally is translated to a `Pstutter` and the other uses `stretch` that modifies the value
+        of `dur` (0.3, 0.075, 0.15, 0.6) repeated 4 times each.
+        Also, a _bass_ midi-synth is defined with `octave` which cycles twice in the same pattern:
+        0/3, 4/4, 7/5, 0/3, 9/4, 0/5.
+        Finally, each dict has `cb`, which is basically a _callback_ over the current note being played.
+
+
+        Callbacks
+
+        It affects the current event (from pattern) and applies a certain function:
+
+        * \asInt, converts to integer
+        * \asPerc, converts to midi note. See PercSymbol for more info
+        * \asChord, which takes an additional argument \chord
+
+        Example:
+        (
+        var pbd = (tempo: 60/60, octave: 5, type: \md, amp: 0.5);
+        var ccc = "c d e".parseRepetitionPattern;
+        ~ccc = ccc.at(0).asPbind(pbd.blend((chan: 4, cb: \asChord, chord: Pseq([\min,\maj,\maj7],inf))));
+        )
+
+        Which will be rendered as:
+        Cmin, DMaj, EMaj7
 
 */
 
-Repetition { }
+Prepetition {
+  *new {
+    ^Prout({
+      |evt|
+      var idx = 0;
+      var len = evt[\pattern].size;
+
+      while { evt.notNil } {
+        var current = evt[\pattern].at(idx).asSymbol;
+        var isPerc = false;
+
+        if (evt[\cb].notNil) {
+          current = current.applyCallback(evt[\cb], evt);
+          isPerc = evt[\cb].asSymbol == \asPerc;
+        };
+
+        if (evt[\octave].isNil) {
+          evt[\octave] = 5;
+        };
+
+        if (evt[\stut].isNil) {
+          evt[\stut] = 1;
+        };
+
+        evt[\dur] = evt[\time].at(idx);
+        evt[\amp] = evt[\amp] + evt[\accent].at(idx);
+
+        if ((evt[\type].notNil == \midi) || (evt[\type].asSymbol == \md)) {
+          evt[\midinote] = current + (if(isPerc.asBoolean == false) { 12*evt[\octave] } { 0 });
+        } {
+          evt[\note] = current;
+        };
+
+        if (idx+1 < len) {
+          idx = idx + 1;
+        } {
+          idx = 0;
+        };
+
+        evt = evt.yield;
+      }
+    }).stutter(Pkey(\stut));
+  }
+}
+
 
 + Symbol {
+
+  // Requires `PercSymbol`;
+  asPerc {
+    ^this
+    .collect {
+      |item|
+      if(item.isEmpty) {
+        \rest;
+      } {
+        item;
+      }
+    }
+    .collect {
+      |item|
+      if (item.isRest) {
+        item;
+      } {
+        item.asGMPerc;
+      }
+    }
+  }
+
+  applyCallback {
+    |cb evt|
+    var sym = this;
+
+    switch (cb.asSymbol,
+      \asInt, {
+        sym = sym.asInt;
+      },
+      // Requires `ChordProg`
+      \asChord, {
+        sym = [sym].asChord(evt[\chord] ?? \maj).flat;
+      },
+      // Requires `PercSymbol`
+      \asPerc, {
+        sym = [sym].asGMPerc;
+      }
+    );
+
+    ^sym;
+  }
 
   maybeRepeat {
     var item = this.asString;
@@ -133,9 +255,9 @@ Repetition { }
     pattern = pattern.collect{ |sub| if (sub.isKindOf(String)) { sub.maybeCleanUp; } { sub.collect(_.maybeCleanUp) } };
 
     ^(
-      accent: acc.flat.asStream,
-      time: time.flat.asStream,
-      pattern: pattern.flat.asStream,
+      accent: acc.flat,
+      time: time.flat,
+      pattern: pattern.flat,
     )
   }
 
@@ -180,6 +302,16 @@ Repetition { }
 
 }
 
++ Dictionary {
+
+  asPbind {
+    |dict|
+    dict.postln;
+    ^Pchain(Prepetition(), Pbind(*this.blend(dict).getPairs));
+  }
+
+}
+
 + SequenceableCollection {
 
   uniq {
@@ -191,10 +323,6 @@ Repetition { }
       }
     };
     ^result.asArray;
-  }
-
-  parseRepetitionCollection {
-    ^this.collect(_.parseRepetitionPattern);
   }
 
 }

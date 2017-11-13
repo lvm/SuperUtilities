@@ -116,6 +116,7 @@
         * \asInt, converts to integer
         * \asPerc, converts to midi note. See PercSymbol for more info
         * \asChord, which takes an additional argument \chord
+        * \asSynth, which should be used with `\type, \dirt`, otherwise the value will be passed as `\note`
 
         Example:
         (
@@ -178,10 +179,12 @@ Prepetition {
       while { evt.notNil } {
         var current = evt[\pattern].at(idx).asSymbol;
         var isPerc = false;
+        var isSynth = false;
 
         if (evt[\cb].notNil) {
           current = current.applyCallback(evt[\cb], evt);
           isPerc = evt[\cb].asSymbol == \asPerc;
+          isSynth = evt[\cb].asSymbol == \asSynth;
         };
 
         if (evt[\octave].isNil) {
@@ -195,10 +198,18 @@ Prepetition {
         evt[\dur] = evt[\time].at(idx);
         evt[\amp] = evt[\amp] + evt[\accent].at(idx);
 
-        if ((evt[\type].notNil == \midi) || (evt[\type].asSymbol == \md)) {
+        if ((evt[\type].asSymbol == \midi) || (evt[\type].asSymbol == \md)) {
           evt[\midinote] = current + (if(isPerc.asBoolean == false) { 12*evt[\octave] } { 0 });
         } {
-          evt[\note] = current;
+          if (evt[\type].asSymbol == \dirt) {
+            if (isSynth.asBoolean) {
+              evt[\s] = current;
+            } {
+              evt[\n] = current;
+            }
+          } {
+            evt[\note] = current;
+          }
         };
 
         if (idx+1 < len) {

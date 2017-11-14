@@ -117,8 +117,9 @@
         * \asPerc, converts to midi note. See PercSymbol for more info
         * \asChord, which takes an additional argument \chord
         * \asSynth, which should be used with `\type, \dirt`, otherwise the value will be passed as `\note`
+        * \asFn, which takes an additiona arg \fn (which should be a function)
 
-        Example:
+        Examples:
         (
         var pbd = (tempo: 60/60, octave: 5, type: \md, amp: 0.5);
         var ccc = "c d e".parseRepetitionPattern;
@@ -127,6 +128,16 @@
 
         Which will be rendered as:
         Cmin, DMaj, EMaj7
+
+        (
+        var pbd = (tempo: 60/60, octave: 5, type: \md, amp: 0.5);
+        var fun = "bd".parseRepetitionPattern;
+        ~fun = fun.at(0).asPbind(pbd.blend((chan: 9, cb: \asFn, fn: {|x| [x].asGMPerc + (12..24).choose }, octave: 0)));
+        )
+
+        Which will add a number between 12 and 24 to the current midinote". Also notice `octave: 0`. That is because in this particular case, since it's a Event type MIDI,
+        it'll add automatically `octave: 5`, so 36 (bd) instead of ending between 48 and 60, it would end between 108 and 120 (`octave: 5` equals to current-note + 12*Pkey(\octave)).
+
 
         Bjorklund / Euclidean Rhythm:
 
@@ -267,6 +278,11 @@ Prepetition {
       // Requires `PercSymbol`
       \asPerc, {
         sym = [sym].asGMPerc;
+      },
+      \asFn, {
+        if (evt[\fn].notNil) {
+          sym = evt[\fn].value(sym);
+        }
       }
     );
 

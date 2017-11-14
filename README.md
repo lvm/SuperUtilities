@@ -176,6 +176,8 @@ It affects the current event (from pattern) and applies a certain function:
 * \asPerc, converts to midi note. See PercSymbol for more info
 * \asChord, which takes an additional argument \chord
 * \asSynth, which should be used with `\type, \dirt`, otherwise the value will be passed as `\note`8
+* \asFn, which takes an additiona arg \fn (which should be a function)
+ 
 
 For example
         
@@ -185,7 +187,17 @@ For example
         ~ccc = ccc.at(0).asPbind(pbd.blend((chan: 4, cb: \asChord, chord: Pseq([\min,\maj,\maj7],inf))));
         )
 
-Which will be rendered as: `Cmin, DMaj, EMaj7`
+Which will be rendered as: `Cmin, DMaj, EMaj7`  
+Or  
+
+        (
+        var pbd = (tempo: 60/60, octave: 0, type: \md, amp: 0.5);
+        var fun = "bd".parseRepetitionPattern;
+        ~fun = fun.at(0).asPbind(pbd.blend((chan: 9, cb: \asFn, fn: {|x| [x].asGMPerc + (12..24).choose })));
+        )
+
+In this particular case, the function will add a number between 12 and 24 to the current midinote". Also notice `octave: 0`. That is because, again, in this particular case, it's a Event type MIDI and it'll add automatically `octave: 5`, so 36 (bd) instead of ending between 48 and 60, would end between 108 and 120 (`octave: 5` equals to `current-note + 12*Pkey(\octave)`).
+
 
 #### Bjorklund / Euclidean Rhythm:
 

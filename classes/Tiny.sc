@@ -15,7 +15,6 @@ TinySnippets {
     ^this.enable(key, snippets);
   }
 
-
   *selectionEnd {
     |doc start = -1|
     var str, end;

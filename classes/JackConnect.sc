@@ -4,7 +4,7 @@
         (c) 2017 by Mauro <mauro@sdf.org>
         http://cyberpunk.com.ar/
 
-        A very basic `jack_lsp`, `jack_connect` and `jack_disconnect` interface for SuperCollider.
+        A very simple `jack_lsp`, `jack_connect` and `jack_disconnect` interface for SuperCollider.
         Note: Requires `jackd2` installed in the system.
 */
 

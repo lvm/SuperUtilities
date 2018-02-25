@@ -24,46 +24,6 @@ Has its own quark now: https://github.com/lvm/Repetition.sc
 Quarks.install("https://github.com/lvm/Repetition.sc");
 ```
 
-## ChordProg.sc
-
-A simple Chord Progression class.
-
-### Usage
-
-```
-ChordProg.getCircle(\c);
-
-ChordProg.getChord(\c, \maj);
-
-ChordProg.getInversion(\c, \maj);
-
-ChordProg.getMajorProg(\c, \pop);
-
-ChordProg.getMinorProg(\c, \blues);
-
-(
-// 1, 3, 5, 6, 7
-[0,2,4,5,6].do {
-  |x|
-  ChordProg.getHarmonicFunc(\c, \major, \tonic, x).postln;
-}
-)
-
-// classic track
-(
-var chord = (
-  \c: \min,
-  \gs: \maj,
-  \a: \min,
-);
-[\c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \gs, \c, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a, \gs, \a].collect{
-  |n|
-  ChordProg.getChord(n, chord[n])
-}.flat;
-)
-
-```
-
 ## Aconnect.sc
 
 A simple `aconnect` front end. Useful when you need to connect _other_ MIDI clients.
@@ -81,6 +41,19 @@ o = a.outByName("amsynth");
 
 a.connect(i.port, o.port);
 a.disconnect(i.port, o.port);
+```
+
+## JackConnect.sc
+
+A very simple `jack_lsp`, `jack_connect` and `jack_disconnect` interface for SuperCollider.
+
+### Usage
+
+```
+j = JackConnect.new;
+j.listClients(_.postln);
+j.connectClients("PulseAudio JACK Sink:front-left", "system:playback_1");
+j.connectClients("PulseAudio JACK Sink:front-right", "system:playback_2");
 ```
 
 
@@ -105,19 +78,6 @@ TinySnippets.enable("y", sni);
 ```
 TinySnippets.disable;
 -> TinySnippets disabled
-```
-
-## MidiEvents.sc
-Events types for MIDIOut Patterns.
-
-### Usage
-
-```
-~midiOut = MIDIOut.newByName("...", "...");
-MidiEvents(~midiOut);
-
-(\type, \md, \midinote, Pseq((60..72),inf).play;
-(\type, \cc, \control, Pseq((0..127),inf).play;
 ```
 
 ## Tidal.sc

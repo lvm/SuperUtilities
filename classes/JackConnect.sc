@@ -8,7 +8,7 @@
         Note: Requires `jackd2` installed in the system.
 */
 
-JackConenct {
+JackConnect {
   classvar lsp, conn, disconn;
   classvar jack;
 

@@ -1,10 +1,10 @@
 /*
-        DrumLoop class
+DrumLoop class
 
-        (c) 2018 by Mauro <mauro@sdf.org>
-        http://cyberpunk.com.ar/
+(c) 2018 by Mauro <mauro@sdf.org>
+http://cyberpunk.com.ar/
 
-        Similar to Scales / Tuning classes but for Drum Loops.
+Similar to Scales / Tuning classes but for Drum Loops.
 */
 
 DrumLoop  {
@@ -21,27 +21,27 @@ DrumLoop  {
     ^this;
   }
 
-	*choose { |size = 16|
-		var loop = this.chooseFromSelected {	|x| (x.size == size) };
-		if(loop.isNil) {
-			"No known loops with size %".format(size).warn
-		};
-		^loop
-	}
+  *choose { |size = 16|
+    var loop = this.chooseFromSelected {	|x| (x.size == size) };
+    if(loop.isNil) {
+      "No known loops with size %".format(size).warn
+    };
+    ^loop
+  }
 
-	*chooseFromSelected { |selectFunc|
-		selectFunc = selectFunc ? { true };
-		^(all.copy.putAll(all.parent)).select(selectFunc)
-		.choose.deepCopy;
-	}
+  *chooseFromSelected { |selectFunc|
+    selectFunc = selectFunc ? { true };
+    ^(all.copy.putAll(all.parent)).select(selectFunc)
+    .choose.deepCopy;
+  }
 
   *at { |key|
     ^all.at(key);
   }
 
-	*names {
-		^(all.keys.asArray ++ all.parent.keys).sort
-	}
+  *names {
+    ^(all.keys.asArray ++ all.parent.keys).sort
+  }
 
   size {
     ^(pattern.keys.isEmpty.not).if ({
@@ -49,16 +49,16 @@ DrumLoop  {
     }, { 0 });
   }
 
-	*doesNotUnderstand { |selector, args|
-		var loop = this.newFromKey(selector, args).deepCopy;
-		^loop ?? { super.doesNotUnderstand(selector, args) };
-	}
+  *doesNotUnderstand { |selector, args|
+    var loop = this.newFromKey(selector, args).deepCopy;
+    ^loop ?? { super.doesNotUnderstand(selector, args) };
+  }
 
-	*newFromKey { |key, tempo|
-		var loop = this.at(key).deepCopy;
-		loop ?? { ("Unknown loop " ++ key.asString).warn; ^nil };
-		^loop
-	}
+  *newFromKey { |key, tempo|
+    var loop = this.at(key).deepCopy;
+    loop ?? { ("Unknown loop " ++ key.asString).warn; ^nil };
+    ^loop
+  }
 
   == { arg that;
     ^this.compareObject(that, #[\pattern, \tempo])
@@ -93,13 +93,20 @@ DrumLoop  {
     ^this
     .pattern
     .collect { |value, key|
-      value.collect{ |b| (b.asBoolean).if { key.asSymbol } { \r }  }
+      value.collect{ |b| (b.asBoolean).if { key.asSymbol } { Rest() }  }
     }
     .values
     .asArray
     .flop
     ;
   }
+
+  wrapAt { |index|
+    ^if(index.isInteger) { this.flop.wrapAt(index) } { this.flop.blendAt(index, \wrapAt) }
+  }
+
+  asStream { ^this.flop.asStream; }
+  embedInStream { ^this.flop.yield; }
 
 }
 

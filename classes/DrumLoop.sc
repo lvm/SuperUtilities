@@ -101,6 +101,10 @@ DrumLoop  {
     ;
   }
 
+  asEventList {
+    ^this.flop.collect{ |midinote| (midinote: midinote, tempo: this.tempo) };
+  }
+
   wrapAt { |index|
     ^if(index.isInteger) { this.flop.wrapAt(index) } { this.flop.blendAt(index, \wrapAt) }
   }

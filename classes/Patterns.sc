@@ -71,15 +71,15 @@ Pswing {
 }
 
 
-PCoin : Pattern {
-  var	<>condition, <>iftrue, <>iffalse, <>default;
-  *new { |condition, iftrue, iffalse, default|
-    ^super.newCopyArgs(condition, iftrue, iffalse, default)
+Pcoin : Pattern {
+  var	<>condition, <>doThis, <>doThat, <>default;
+  *new { |condition, doThis, doThat, default|
+    ^super.newCopyArgs(condition, doThis, doThat, default)
   }
-  storeArgs { ^[condition, iftrue, iffalse,default] }
+  storeArgs { ^[condition, doThis, doThat,default] }
   asStream {
-    var	trueStream = iftrue.asStream,
-    falseStream = iffalse.asStream;
+    var	trueStream = doThis.asStream,
+    falseStream = doThat.asStream;
 
     ^FuncStream({ |inval|
       var test;
@@ -99,20 +99,20 @@ PCoin : Pattern {
   }
 }
 
-PNever : PCoin {
-  *new { |iftrue, iffalse, default|	^super.newCopyArgs(0.0, iftrue, iffalse, default) }
+Pnever : Pcoin {
+  *new { |doThis, doThat, default|	^super.newCopyArgs(0.0, doThis, doThat, default) }
 }
-PRarely : PCoin {
-  *new { |iftrue, iffalse, default|	^super.newCopyArgs(0.25, iftrue, iffalse, default) }
+Prarely : Pcoin {
+  *new { |doThis, doThat, default|	^super.newCopyArgs(0.25, doThis, doThat, default) }
 }
-PSometimes : PCoin {
-  *new { |iftrue, iffalse, default| ^super.newCopyArgs(0.5, iftrue, iffalse, default) }
+Psometimes : Pcoin {
+  *new { |doThis, doThat, default| ^super.newCopyArgs(0.5, doThis, doThat, default) }
 }
-PRegularly : PCoin {
-  *new { |iftrue, iffalse, default| ^super.newCopyArgs(0.75, iftrue, iffalse, default) }
+Pregularly : Pcoin {
+  *new { |doThis, doThat, default| ^super.newCopyArgs(0.75, doThis, doThat, default) }
 }
-PAlways : PCoin {
-  *new { |iftrue, iffalse, default|	^super.newCopyArgs(1.0, iftrue, iffalse, default) }
+Palways : Pcoin {
+  *new { |doThis, doThat, default|	^super.newCopyArgs(1.0, doThis, doThat, default) }
 }
 
 PifRest : Pattern {
@@ -184,6 +184,41 @@ Plsys : Pattern {
       outval = stream.next(inval);
       if (outval.isNil) { ^inval };
       inval = outval.yield;
+    }
+  }
+}
+
+Pdur : Pattern {
+  var <>proportion, <>pattern, <>default;
+  *new { |proportion, pattern=1, default=1|
+    ^super.newCopyArgs(proportion, pattern, default);
+  }
+  storeArgs { ^[proportion, pattern, default] }
+  embedInStream { |inval|
+    var stream, outval;
+    stream = Prorate(proportion, pattern).asStream;
+    loop {
+      outval = stream.next(inval);
+      if (outval.isNil) { outval = default; };
+      inval = outval.clip(0.03125, 256).yield; // to avoid negative values
+    }
+  }
+}
+
+Psec : Pattern {
+  var <>seconds, <>default;
+  *new { |seconds, default=1|
+    ^super.newCopyArgs(seconds, default);
+  }
+  storeArgs { ^[seconds, default] }
+  embedInStream { |inval|
+    var stream, outval, tempo;
+    tempo = TempoClock.default.tempo;
+    stream = seconds.asStream;
+    loop {
+      outval = stream.next(inval);
+      if (outval.isNil) { outval = default; };
+      inval = (outval.clip(0.1, 256) / tempo ).yield;
     }
   }
 }

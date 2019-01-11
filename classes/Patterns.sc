@@ -28,48 +28,67 @@ Pstruct : Pattern {
   }
 }
 
-/*
-Swing lifted from Pattern Guide Cookbook 08: Swing
-*/
-Pswing {
-  *new { |pattern amt=0.25 base=0.25 threshold=0|
-    var swinger = Prout({ |ev|
-      var now, nextTime = 0, thisShouldSwing, nextShouldSwing = false, adjust;
-      while { ev.notNil } {
-        // current time is what was "next" last time
-        now = nextTime;
-        nextTime = now + ev.delta;
-        thisShouldSwing = nextShouldSwing;
-        // should next beat swing?
-        nextShouldSwing =
-        ((nextTime absdif: nextTime.round(ev[\swingBase]))
-          <= (ev[\swingThreshold] ? 0)) and: {
-          (nextTime / ev[\swingBase]).round.asInteger.odd
-        };
-        adjust = ev[\swingBase] * ev[\swingAmount];
-        // an odd number here means we're on an off-beat
-        if(thisShouldSwing) {
-          ev[\timingOffset] = (ev[\timingOffset] ? 0) + adjust;
-          // if next note will not swing, this note needs to be shortened
-          if(nextShouldSwing.not) {
-            ev[\dur] = ev.use { ~dur.value } - adjust;
-          };
-        } {
-          // if next note will swing, this note needs to be lengthened
-          if(nextShouldSwing) {
-            ev[\dur] = ev.use { ~dur.value } + adjust;
-          };
-        };
-        ev = ev.yield;
-      };
-    });
+Pdilla : FilterPattern {
+  /*
+  Adapted from:
+  -> Pattern Guide Cookbook 08: Swing
+  */
+  var <>swingAmount, <>swingBase, <>swingThreshold;
+  *new { arg pattern, swingAmount=0, swingBase=0, swingThreshold=0;
+    ^super.newCopyArgs(pattern, swingAmount, swingBase, swingThreshold);
+  }
+  storeArgs { ^[pattern, swingAmount, swingBase, swingThreshold] }
 
-    ^Pchain(swinger, pattern, (
-      swingAmount: amt, swingBase: base, swingThreshold: threshold
-    ))
+  embedInStream {  arg inevent;
+    var cleanup = EventStreamCleanup.new;
+    var now, adjust, thisShouldSwing, nextTime = 0, nextShouldSwing = false;
+    var event, swAmount, swBase, swThreshold;
+    var evtStream = pattern.asStream;
+    var amtStream = swingAmount.asStream;
+    var baseStream = swingBase.asStream;
+    var thresholdStream = swingThreshold.asStream;
+
+    loop {
+      event = evtStream.next(inevent).asEvent;
+      if (event.isNil) { ^cleanup.exit(inevent) };
+      swAmount = amtStream.next(event);
+      swBase = baseStream.next(event);
+      swThreshold = thresholdStream.next(event);
+      if (swAmount.isNil || swBase.isNil || swThreshold.isNil) {
+        ^cleanup.exit(inevent)
+      };
+
+      // current time is what was "next" last time
+      now = nextTime;
+      nextTime = now + event.delta;
+      thisShouldSwing = nextShouldSwing;
+      // should next beat swing?
+      nextShouldSwing =
+      ((nextTime absdif: nextTime.round(swBase))
+        <= (swThreshold ? 0)) and: {
+        (nextTime / swBase).round.asInteger.odd
+      };
+      adjust = swBase * swAmount;
+      // an odd number here means we're on an off-beat
+      if(thisShouldSwing) {
+        event[\timingOffset] = (event[\timingOffset] ? 0) + adjust;
+        // if next note will not swing, this note needs to be shortened
+        if(nextShouldSwing.not) {
+          event[\dur] = event.use { ~dur.value } - adjust;
+        };
+      } {
+        // if next note will swing, this note needs to be lengthened
+        if(nextShouldSwing) {
+          event[\dur] = event.use { ~dur.value } + adjust;
+        };
+      };
+      cleanup.update(event);
+      inevent = yield(event);
+    }
   }
 }
 
+Pswing : Pdilla { }
 
 Pcoin : Pattern {
   var	<>condition, <>doThis, <>doThat, <>default;
@@ -222,3 +241,4 @@ Psec : Pattern {
     }
   }
 }
+

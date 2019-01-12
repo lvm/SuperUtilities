@@ -1,0 +1,15 @@
+TITLE:: Pregularly
+summary:: Will regularly return true
+related:: Classes/Pdilla, Classes/Pcoin, Classes/Pnever, Classes/Psometimes, Classes/Pstruct, Classes/PifRest, Classes/PifEqual, Classes/Plsys, Classes/Pdur, Classes/Psec, Classes/Pmidi, Classes/Pcc, Classes/Pdirt
+categories:: Streams-Patterns-Events>Patterns
+
+description::
+
+75 % of the time returns the "true" value.
+
+Examples::
+
+code::
+Pregularly(1, 0).asStream.nextN(16);
+-> [ 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0 ]
+::

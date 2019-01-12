@@ -1,0 +1,15 @@
+TITLE:: Psometimes
+summary:: Will sometimes return true
+related:: Classes/Pdilla, Classes/Pcoin, Classes/Pnever, Classes/Pstruct, Classes/PifRest, Classes/PifEqual, Classes/Plsys, Classes/Pdur, Classes/Psec, Classes/Pmidi, Classes/Pcc, Classes/Pdirt, Classes/Pregularly
+categories:: Streams-Patterns-Events>Patterns
+
+description::
+
+50 % of the time returns the "true" value.
+
+Examples::
+
+code::
+Psometimes(1, 0).asStream.nextN(16);
+-> [ 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1 ]
+::

@@ -1,0 +1,16 @@
+TITLE:: Psec
+summary:: Duration in seconds
+related:: Classes/Pdilla, Classes/Pcoin, Classes/Pnever, Classes/Psometimes, Classes/Pstruct, Classes/PifRest, Classes/PifEqual, Classes/Plsys, Classes/Pdur, Classes/Pmidi, Classes/Pcc, Classes/Pdirt, Classes/Pregularly
+categories:: Streams-Patterns-Events>Patterns
+
+description::
+
+Duration in seconds. Sort of.
+It divides the given value by TempoClock.default.tempo.
+
+Examples::
+
+code::
+Psec(Pseq([2, 4], inf), 1).asStream.nextN(10);
+-> [ 2.0, 4.0, 2.0, 4.0, 2.0, 4.0, 2.0, 4.0, 2.0, 4.0 ]
+::

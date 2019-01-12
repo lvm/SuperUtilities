@@ -1,0 +1,19 @@
+TITLE:: Pdilla
+summary:: "Drunk" Patterns
+related:: Classes/Pcoin, Classes/Pnever, Classes/Psometimes, Classes/Pstruct, Classes/PifRest, Classes/PifEqual, Classes/Plsys, Classes/Pdur, Classes/Psec, Classes/Pmidi, Classes/Pcc, Classes/Pdirt, Classes/Pregularly
+categories:: Streams-Patterns-Events>Patterns
+
+description::
+
+J Dilla meets Patterns
+
+Examples::
+
+code::
+Pdilla(
+  Pbind(...),
+  swingAmount: 0, // or a Pattern
+  swingBase: 0, // or a Pattern
+  swingThreshold: 0 // or a Pattern
+);
+::

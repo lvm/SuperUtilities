@@ -1,0 +1,17 @@
+TITLE:: Pmidi
+summary:: Pbind for MIDI
+related:: Classes/Pdilla, Classes/Pcoin, Classes/Pnever, Classes/Psometimes, Classes/Pstruct, Classes/PifRest, Classes/PifEqual, Classes/Plsys, Classes/Pdur, Classes/Psec, Classes/Pcc, Classes/Pdirt, Classes/Pregularly
+categories:: Streams-Patterns-Events>Patterns
+
+description::
+
+A Pbind with pre-filled arguments for MIDI Patterns.
+
+Examples::
+
+code::
+Pdirt(
+  \midinote, Pstruct(Pseq([\bd],inf), 3, 8),
+  \dur, 1/4,
+)
+::

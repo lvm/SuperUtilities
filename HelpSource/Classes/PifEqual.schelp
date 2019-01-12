@@ -1,0 +1,18 @@
+TITLE:: PifEqual
+summary:: Compares Pbind arguments
+related:: Classes/Pdilla, Classes/Pcoin, Classes/Pnever, Classes/Psometimes, Classes/Pstruct, Classes/PifRest, Classes/Plsys, Classes/Pdur, Classes/Psec, Classes/Pmidi, Classes/Pcc, Classes/Pdirt, Classes/Pregularly
+categories:: Streams-Patterns-Events>Patterns
+
+description::
+
+Pif that takes two arguments and returns true or false if they are ...equal.
+
+Examples::
+
+code::
+Pbind(
+  \a, Pwhite(1,10),
+  \b, Pwhite(1,10),
+  \c, PifEqual(\a, \b, true, false),
+);
+::

@@ -1,0 +1,19 @@
+TITLE:: PifRest
+summary:: Is Pattern argument a Rest?
+related:: Classes/Pdilla, Classes/Pcoin, Classes/Pnever, Classes/Psometimes, Classes/Pstruct, Classes/PifEqual, Classes/Plsys, Classes/Pdur, Classes/Psec, Classes/Pmidi, Classes/Pcc, Classes/Pdirt, Classes/Pregularly
+categories:: Streams-Patterns-Events>Patterns
+
+description::
+
+Pif that takes an argument and returns true or false if that argument is a Rest.
+
+Examples::
+
+code::
+Pbind(
+  ...
+  \midinote, Pseq([\bd, \r, \sn, \r], inf),
+  \dur, PifRest(\midinote, 1, 1/4),
+  ...
+);
+::

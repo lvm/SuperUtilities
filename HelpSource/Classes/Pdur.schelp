@@ -1,0 +1,15 @@
+TITLE:: Pdur
+summary:: Divide duration proportionally
+related:: Classes/Pdilla, Classes/Pcoin, Classes/Pnever, Classes/Psometimes, Classes/Pstruct, Classes/PifRest, Classes/PifEqual, Classes/Plsys, Classes/Psec, Classes/Pmidi, Classes/Pcc, Classes/Pdirt, Classes/Pregularly
+categories:: Streams-Patterns-Events>Patterns
+
+description::
+
+Prorate but with a default value. Usually to be used with "\dur"
+
+Examples::
+
+code::
+Pdur(1/4, Pseq([1,1/2],inf), 1/2).asStream.nextN(10);
+-> [ 0.25, 0.75, 0.125, 0.375, 0.25, 0.75, 0.125, 0.375, 0.25, 0.75 ]
+::

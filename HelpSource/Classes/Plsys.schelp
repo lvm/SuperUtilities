@@ -1,0 +1,15 @@
+TITLE:: Plsys
+summary:: L-System + Patterns
+related:: Classes/Pdilla, Classes/Pcoin, Classes/Pnever, Classes/Psometimes, Classes/Pstruct, Classes/PifRest, Classes/PifEqual, Classes/Pdur, Classes/Psec, Classes/Pmidi, Classes/Pcc, Classes/Pdirt, Classes/Pregularly
+categories:: Streams-Patterns-Events>Patterns
+
+description::
+
+L-System (Prewrite) meets Patterns
+
+Examples::
+
+code::
+Plsys(\bd, (\bd: [\bd, \r, \r, \r], \r: [\r, \bd, \ch, \r]), 3).asStream.nextN(10);
+-> [ 36, Rest(1), Rest(1), Rest(1), Rest(1), 36, 42, Rest(1), Rest(1), 36 ]
+::

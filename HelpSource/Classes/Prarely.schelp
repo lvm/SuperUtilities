@@ -1,0 +1,15 @@
+TITLE:: Prarely
+summary:: Will rarely returns true
+related:: Classes/Pdilla, Classes/Pcoin, Classes/Pnever, Classes/Psometimes, Classes/Pstruct, Classes/PifRest, Classes/PifEqual, Classes/Plsys, Classes/Pdur, Classes/Psec, Classes/Pmidi, Classes/Pcc, Classes/Pdirt
+categories:: Streams-Patterns-Events>Patterns
+
+description::
+
+25 % of the time returns the "true" value.
+
+Examples::
+
+code::
+Prarely(1, 0).asStream.nextN(16);
+-> [ 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 ]
+::

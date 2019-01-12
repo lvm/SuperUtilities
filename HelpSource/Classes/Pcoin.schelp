@@ -1,0 +1,15 @@
+TITLE:: Pcoin
+summary:: Pattern class for coin method
+related:: Classes/Pdilla, Classes/Pnever, Classes/Psometimes, Classes/Pstruct, Classes/PifRest, Classes/PifEqual, Classes/Plsys, Classes/Pdur, Classes/Psec, Classes/Pmidi, Classes/Pcc, Classes/Pdirt, Classes/Pregularly
+categories:: Streams-Patterns-Events>Patterns
+
+description::
+
+Will return a N% of the chances a value, the rest... the other value.
+
+Examples::
+
+code::
+Pcoin(0.25, 1, 0).asStream.nextN(16);
+-> [ 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+::

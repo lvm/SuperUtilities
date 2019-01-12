@@ -1,0 +1,18 @@
+TITLE:: Pdirt
+summary:: Pbind for SuperDirt
+related:: Classes/Pdilla, Classes/Pcoin, Classes/Pnever, Classes/Psometimes, Classes/Pstruct, Classes/PifRest, Classes/PifEqual, Classes/Plsys, Classes/Pdur, Classes/Psec, Classes/Pmidi, Classes/Pcc, Classes/Pregularly
+categories:: Streams-Patterns-Events>Patterns
+
+description::
+
+A Pbind with pre-filled arguments for SuperDirt Patterns.
+
+Examples::
+
+code::
+Pdirt(
+  \s, \bd,
+  \dur, 1,
+  \orbit, 0,
+)
+::

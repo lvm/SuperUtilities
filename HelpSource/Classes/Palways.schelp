@@ -1,0 +1,15 @@
+TITLE:: Palways
+summary:: Pattern that always return true
+related:: Classes/Pdilla, Classes/Pcoin, Classes/Pnever, Classes/Prarely, Classes/Pstruct, Classes/PifRest, Classes/PifEqual, Classes/Plsys, Classes/Pdur, Classes/Psec, Classes/Pmidi, Classes/Pcc, Classes/Pdirt, Classes/Psometimes
+categories:: Streams-Patterns-Events>Patterns
+
+description::
+
+100 % of the time returns the "true" value.
+
+Examples::
+
+code::
+Palways(1, 0).asStream.nextN(16);
+-> [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ]
+::

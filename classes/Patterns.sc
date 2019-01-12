@@ -242,3 +242,58 @@ Psec : Pattern {
   }
 }
 
+
+
+/*
+These classes are the worst thing ever.
+DO NOT use them if you have some self respect >:(
+*/
+Pbase {
+  *new { |...pattern|
+    ^Pchain(Pbind(*pattern), Pbind(
+      \tempo, PatternProxy(Pfunc{ TempoClock.default.tempo }),
+      \amp, PatternProxy(0.9),
+      \dur, PatternProxy(1),
+      \fast, PatternProxy(1), // ??
+      \slow, PatternProxy(1), // ??
+      \stut, PatternProxy(1),
+      \stretch, PatternProxy(1),
+      \seq, PatternProxy(0),
+      \sequence, PatternProxy(0),
+    ));
+  }
+}
+
+Pmidi {
+  *new { |...pattern|
+    ^Pchain(Pbase(*pattern), Pbind(
+      \type, \midi,
+      \midiout, Pfunc{currentEnvironment.at(\midi) ?? nil},
+      \midinote, PatternProxy(0),
+      \chan, PatternProxy(9),
+    ));
+  }
+}
+
+Pcc {
+  *new { |...pattern|
+    ^Pchain(Pbase(*pattern), Pbind(
+      \type, \control,
+      \midiout, Pfunc{currentEnvironment.at(\cc) ?? nil},
+      \control, PatternProxy(0),
+      \ctlNum, PatternProxy(23),
+      \chan, PatternProxy(9),
+    ));
+  }
+}
+
+Pdirt {
+  *new { |...pattern|
+    ^Pchain(Pbase(*pattern), Pbind(
+      \type, \dirt,
+      \orbit, 0,
+      \gain, 0.9,
+    ));
+  }
+}
+

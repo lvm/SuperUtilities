@@ -242,6 +242,23 @@ Psec : Pattern {
   }
 }
 
+Psampler {
+  *new { |... args|
+    ^Pchain(
+      Prout({ |evt|
+        var clock = TempoClock.default;
+        while { evt.notNil } {
+          evt[\instrument] = "sampler_%".format(evt.buf.numChannels);
+          evt[\fps] = evt.buf.numFrames/evt.beats;
+          evt[\startPos] = (evt[\pos] ?? 0 ) * evt[\fps];
+          evt[\dur] = evt[\dur] ?? clock.beatDur;
+          evt = evt.yield;
+        }
+      }),
+      Pbind(*args)
+    );
+  }
+}
 
 
 /*
@@ -257,7 +274,7 @@ Pbase {
       \fast, PatternProxy(1), // ??
       \slow, PatternProxy(1), // ??
       \stut, PatternProxy(1),
-      \stretch, PatternProxy(1),
+      \stretch, PatternProxy(1) / (Pkey(\fast) / Pkey(\slow)),
       \seq, PatternProxy(0),
       \sequence, PatternProxy(0),
     ));
@@ -297,3 +314,38 @@ Pdirt {
   }
 }
 
+Pdrum {
+  *new { |loop ... pattern|
+    ^Ppar(
+      loop.collect{ |sequence|
+        Pmidi(
+          *[
+            \pattern, Pseq(sequence, inf),
+            \dir, Psometimes(1, PifRest(\pattern, 1, Pwrand([1, Pxrand([2, 4, -2, -4])], [0.9, 0.1], inf))),
+            \stut, Pcoin(0.9, Pregularly(8,Psometimes(2,4)), PifRest(\pattern, 1, Psometimes(2, Psometimes(3,4)))),
+            \sequence, Pscratch(Pkey(\pattern), PifRest(\pattern, 1, Pkey(\dir))),
+            \midinote, Pstutter(Pkey(\stut), Pkey(\sequence)),
+          ].addAll(pattern)
+        )
+      }, inf
+    )
+  }
+}
+
+Pdrumx {
+  *new { |loop ... pattern|
+    ^Ppar(
+      loop.collect{ |sequence|
+        Pmidi(
+          *[
+            \pattern, Pxrand(sequence, inf),
+            \dir, Psometimes(1, PifRest(\pattern, 1, Pwrand([1, Pxrand([2, 4, -2, -4])], [0.9, 0.1], inf))),
+            \stut, Pcoin(0.9, Pregularly(8,Psometimes(2,4)), PifRest(\pattern, 1, Psometimes(2, Psometimes(3,4)))),
+            \sequence, Pscratch(Pkey(\pattern), PifRest(\pattern, 1, Pkey(\dir))),
+            \midinote, Pstutter(Pkey(\stut), Pkey(\sequence)),
+          ].addAll(pattern)
+        )
+      }, inf
+    )
+  }
+}

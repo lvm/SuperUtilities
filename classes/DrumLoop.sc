@@ -89,28 +89,43 @@ DrumLoop  {
     ^this.names.collect({ |k| "%: % -> % steps".format(all.at(k).name, k, all.at(k).size ) }).join("\n")
   }
 
-  flop {
+  parallel {
     ^this
     .pattern
     .collect { |value, key|
-      value.collect{ |b| (b.asBoolean).if { key.asSymbol } { Rest() }  }
+      value.collect{ |b| (b.asBoolean).if { key.asSymbol } { \r }  }
     }
     .values
     .asArray
-    .flop
     ;
   }
 
-  asEventList {
-    ^this.flop.collect{ |midinote| (midinote: midinote, tempo: this.tempo) };
+  flat {
+    ^this
+    .parallel
+    .flop
+    .collect{ |notes|
+      notes = notes.uniq;
+      (notes != [\r]).if { notes.remove(\r) };
+      notes = (notes.size == 1).if { notes.at(0) } { notes };
+    }
+    ;
+  }
+
+  flop {
+    ^this.flat;
+  }
+
+  asSingleEventList {
+    ^this.flat.collect{ |midinote| (midinote: midinote, tempo: this.tempo) };
   }
 
   wrapAt { |index|
-    ^if(index.isInteger) { this.flop.wrapAt(index) } { this.flop.blendAt(index, \wrapAt) }
+    ^if(index.isInteger) { this.flat.wrapAt(index) } { this.flat.blendAt(index, \wrapAt) }
   }
 
-  asStream { ^this.flop.asStream; }
-  embedInStream { ^this.flop.yield; }
+  asStream { ^this.flat.asStream; }
+  embedInStream { ^this.flat.yield; }
 
 }
 

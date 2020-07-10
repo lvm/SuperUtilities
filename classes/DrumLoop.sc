@@ -3215,6 +3215,1572 @@ DrumLoop  {
           cy: [0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1],
         )
       ),
+      \oneSevenFiveThirteen -> DrumLoop.new(
+        tempo: 1,
+        name: "One Seven Five Thirteen",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \bootsNCats -> DrumLoop.new(
+        tempo: 1,
+        name: "Boots N Cats",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \tinyHouse -> DrumLoop.new(
+        tempo: 1,
+        name: "Tiny House",
+        pattern: (
+          bd: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          oh: [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \goodToGo -> DrumLoop.new(
+        tempo: 1,
+        name: "Good To Go",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hipHop -> DrumLoop.new(
+        tempo: 1,
+        name: "Hip Hop",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \break1 -> DrumLoop.new(
+        tempo: 1,
+        name: "Break 1",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \break2 -> DrumLoop.new(
+        tempo: 1,
+        name: "Break 2",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \rollinBreak -> DrumLoop.new(
+        tempo: 1,
+        name: "Rollin Break",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \unknownDrummer -> DrumLoop.new(
+        tempo: 1,
+        name: "Unknown Drummer",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0],
+          oh: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \planetRock -> DrumLoop.new(
+        tempo: 1,
+        name: "Planet Rock",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          cp: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          cb: [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0],
+          rm: [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0],
+          ch: [1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1],
+        ),
+      ),
+      \electro1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Electro 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \electro1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Electro 1b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \electro2a -> DrumLoop.new(
+        tempo: 1,
+        name: "Electro 2a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \electro2b -> DrumLoop.new(
+        tempo: 1,
+        name: "Electro 2b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \electro3a -> DrumLoop.new(
+        tempo: 1,
+        name: "Electro 3a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \electro3b -> DrumLoop.new(
+        tempo: 1,
+        name: "Electro 3b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \siberianNights -> DrumLoop.new(
+        tempo: 1,
+        name: "Siberian Nights",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1],
+        ),
+      ),
+      \newWave -> DrumLoop.new(
+        tempo: 1,
+        name: "New Wave",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          oh: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sh: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \house1a -> DrumLoop.new(
+        tempo: 1,
+        name: "House 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          cy: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          oh: [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \house1b -> DrumLoop.new(
+        tempo: 1,
+        name: "House 1b",
+        pattern: (
+          bd: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          oh: [0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
+        ),
+      ),
+      \britHouse -> DrumLoop.new(
+        tempo: 1,
+        name: "Brit House",
+        pattern: (
+          bd: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1],
+          cy: [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+          oh: [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \frenchHouse -> DrumLoop.new(
+        tempo: 1,
+        name: "French House",
+        pattern: (
+          bd: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          sh: [1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
+          oh: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \dirtyHouse -> DrumLoop.new(
+        tempo: 1,
+        name: "Dirty House",
+        pattern: (
+          bd: [1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          cl: [0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0],
+          ch: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+          oh: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \deepHouse -> DrumLoop.new(
+        tempo: 1,
+        name: "Deep House",
+        pattern: (
+          bd: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          cl: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+          oh: [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \deeperHouse -> DrumLoop.new(
+        tempo: 1,
+        name: "Deeper House",
+        pattern: (
+          bd: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          cl: [0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+          mt: [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+          sh: [0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          oh: [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0],
+        ),
+      ),
+      \slowDeepHouse -> DrumLoop.new(
+        tempo: 1,
+        name: "Slow Deep House",
+        pattern: (
+          bd: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          sh: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          ch: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          oh: [0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \footwork1 -> DrumLoop.new(
+        tempo: 1,
+        name: "Footwork 1",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0],
+          cl: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          rm: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        ),
+      ),
+      \footwork2 -> DrumLoop.new(
+        tempo: 1,
+        name: "Footwork 2",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0],
+          cl: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0],
+          rm: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        ),
+      ),
+      \miamiBass1 -> DrumLoop.new(
+        tempo: 1,
+        name: "Miami Bass 1",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1],
+        ),
+      ),
+      \miamiBass2 -> DrumLoop.new(
+        tempo: 1,
+        name: "Miami Bass 2",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1],
+        ),
+      ),
+      \sally -> DrumLoop.new(
+        tempo: 1,
+        name: "Sally",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          lt: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \rockThePlanet -> DrumLoop.new(
+        tempo: 1,
+        name: "Rock The Planet",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          ch: [1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1],
+        ),
+      ),
+      \hiphop1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Hiphop1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hiphop1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Hiphop1b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hiphop1c -> DrumLoop.new(
+        tempo: 1,
+        name: "Hiphop1c",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hiphop2a -> DrumLoop.new(
+        tempo: 1,
+        name: "Hiphop2a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hiphop2b -> DrumLoop.new(
+        tempo: 1,
+        name: "Hiphop2b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hiphop3a -> DrumLoop.new(
+        tempo: 1,
+        name: "Hiphop3a",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hiphop3b -> DrumLoop.new(
+        tempo: 1,
+        name: "Hiphop3b",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hiphop4a -> DrumLoop.new(
+        tempo: 1,
+        name: "Hiphop4a",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hiphop4b -> DrumLoop.new(
+        tempo: 1,
+        name: "Hiphop4b",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hiphop5 -> DrumLoop.new(
+        tempo: 1,
+        name: "Hiphop5",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hiphop6 -> DrumLoop.new(
+        tempo: 1,
+        name: "Hiphop6",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \hiphop7 -> DrumLoop.new(
+        tempo: 1,
+        name: "Hiphop7",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \hiphop8 -> DrumLoop.new(
+        tempo: 1,
+        name: "Hiphop8",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1],
+        ),
+      ),
+      \trap1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Trap1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          sn: [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \trap1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Trap1b",
+        pattern: (
+          bd: [0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \yaMama -> DrumLoop.new(
+        tempo: 1,
+        name: "Ya Mama",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+          cy: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \moreBounceToTheOunce -> DrumLoop.new(
+        tempo: 1,
+        name: "More Bounce To The Ounce",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          cy: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+          oh: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \bouton -> DrumLoop.new(
+        tempo: 1,
+        name: "Bouton",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0],
+          rm: [0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \Dnb1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Dnb 1a",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \Dnb1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Dnb 1b",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \Dnb2a -> DrumLoop.new(
+        tempo: 1,
+        name: "Dnb 2a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
+        ),
+      ),
+      \Dnb3 -> DrumLoop.new(
+        tempo: 1,
+        name: "Dnb 3",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          oh: [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \Dnb4a -> DrumLoop.new(
+        tempo: 1,
+        name: "Dnb 4a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
+          oh: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \Dnb4b -> DrumLoop.new(
+        tempo: 1,
+        name: "Dnb 4b",
+        pattern: (
+          bd: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
+          oh: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \Jungle1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Jungle 1a",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
+          oh: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \Jungle1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Jungle 1b",
+        pattern: (
+          bd: [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
+        ),
+      ),
+      \Dubstep1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Dubstep 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          ch: [0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0],
+          oh: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+        ),
+      ),
+      \Dubstep1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Dubstep 1b",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          ch: [0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0],
+          oh: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+        ),
+      ),
+      \DubstepRatcheted -> DrumLoop.new(
+        tempo: 1,
+        name: "Dubstep Ratcheted",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+          sn: [0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1],
+          ch: [0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0],
+          oh: [0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \ukGarage1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Uk Garage 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          cl: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1],
+          rm: [0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0],
+          mt: [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+        ),
+      ),
+      \ukGarage1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Uk Garage 1b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          cl: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+          rm: [0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0],
+          mt: [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+        ),
+      ),
+      \synthWave -> DrumLoop.new(
+        tempo: 1,
+        name: "Synth Wave",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        ),
+      ),
+      \halfDrop -> DrumLoop.new(
+        tempo: 1,
+        name: "Half Drop",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \oneDrop -> DrumLoop.new(
+        tempo: 1,
+        name: "One Drop",
+        pattern: (
+          bd: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \twoDrop -> DrumLoop.new(
+        tempo: 1,
+        name: "Two Drop",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \steppers -> DrumLoop.new(
+        tempo: 1,
+        name: "Steppers",
+        pattern: (
+          bd: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          sn: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \reggaeton -> DrumLoop.new(
+        tempo: 1,
+        name: "Reggaeton",
+        pattern: (
+          bd: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          sn: [0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \breakbeat1 -> DrumLoop.new(
+        tempo: 1,
+        name: "Breakbeat 1",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \breakbeat2 -> DrumLoop.new(
+        tempo: 1,
+        name: "Breakbeat 2",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \breakbeat3 -> DrumLoop.new(
+        tempo: 1,
+        name: "Breakbeat 3",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \poly1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Poly 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1],
+        ),
+      ),
+      \poly1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Poly 1b",
+        pattern: (
+          bd: [0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hybridKick1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Hybrid Kick 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hybridKick1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Hybrid Kick 1b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hybridKick1c -> DrumLoop.new(
+        tempo: 1,
+        name: "Hybrid Kick 1c",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hybridKick1d -> DrumLoop.new(
+        tempo: 1,
+        name: "Hybrid Kick 1d",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hybridKick1e -> DrumLoop.new(
+        tempo: 1,
+        name: "Hybrid Kick 1e",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hybridKick1f -> DrumLoop.new(
+        tempo: 1,
+        name: "Hybrid Kick 1f",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hybridKick1g -> DrumLoop.new(
+        tempo: 1,
+        name: "Hybrid Kick 1g",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hybridKick2a -> DrumLoop.new(
+        tempo: 1,
+        name: "Hybrid Kick 2a",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hybridKick2b -> DrumLoop.new(
+        tempo: 1,
+        name: "Hybrid Kick 2b",
+        pattern: (
+          bd: [1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hybridKick3a -> DrumLoop.new(
+        tempo: 1,
+        name: "Hybrid Kick 3a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \hybridKick3b -> DrumLoop.new(
+        tempo: 1,
+        name: "Hybrid Kick 3b",
+        pattern: (
+          bd: [1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \irregular1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Irregular 1a",
+        pattern: (
+          bd: [1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1],
+        ),
+      ),
+      \irregular1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Irregular 1b",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1],
+        ),
+      ),
+      \irregular2a -> DrumLoop.new(
+        tempo: 1,
+        name: "Irregular 2a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \irregular2b -> DrumLoop.new(
+        tempo: 1,
+        name: "Irregular 2b",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \irregular3 -> DrumLoop.new(
+        tempo: 1,
+        name: "Irregular 3",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+          sn: [0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
+        ),
+      ),
+      \rolling1 -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 1",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling2 -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 2",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling3a -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 3a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \rolling3b -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 3b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \rolling4a -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 4a",
+        pattern: (
+          bd: [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling4b -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 4b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling5a -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 5a",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling5b -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 5b",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling6a -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 6a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling7a -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 7a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling7b -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 7b",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling7c -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 7c",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling7d -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 7d",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling8 -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 8",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling9a -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 9a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling9b -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 9b",
+        pattern: (
+          bd: [1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling10 -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 10",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \rolling11 -> DrumLoop.new(
+        tempo: 1,
+        name: "Rolling 11",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \contemporarySnare1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Contemporary Snare 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \contemporarySnare1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Contemporary Snare 1b",
+        pattern: (
+          bd: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+        ),
+      ),
+      \contemporarySnare2a -> DrumLoop.new(
+        tempo: 1,
+        name: "Contemporary Snare 2a",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \contemporarySnare2b -> DrumLoop.new(
+        tempo: 1,
+        name: "Contemporary Snare 2b",
+        pattern: (
+          bd: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \contemporarySnare3a -> DrumLoop.new(
+        tempo: 1,
+        name: "Contemporary Snare 3a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1],
+        ),
+      ),
+      \contemporarySnare3b -> DrumLoop.new(
+        tempo: 1,
+        name: "Contemporary Snare 3b",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \unconventionalSnare1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Unconventional Snare 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \unconventionalSnare1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Unconventional Snare 1b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \unconventionalSnare2a -> DrumLoop.new(
+        tempo: 1,
+        name: "Unconventional Snare 2a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
+        ),
+      ),
+      \unconventionalSnare2b -> DrumLoop.new(
+        tempo: 1,
+        name: "Unconventional Snare 2b",
+        pattern: (
+          bd: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \unconventionalSnare3a -> DrumLoop.new(
+        tempo: 1,
+        name: "Unconventional Snare 3a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \unconventionalSnare3b -> DrumLoop.new(
+        tempo: 1,
+        name: "Unconventional Snare 3b",
+        pattern: (
+          bd: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \unconventionalSnare4a -> DrumLoop.new(
+        tempo: 1,
+        name: "Unconventional Snare 4a",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \unconventionalSnare4b -> DrumLoop.new(
+        tempo: 1,
+        name: "Unconventional Snare 4b",
+        pattern: (
+          bd: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \ghostSnare1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Ghost Snare 1a",
+        pattern: (
+          sn: [0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1],
+        ),
+      ),
+      \ghostSnare1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Ghost Snare 1b",
+        pattern: (
+          sn: [0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \ghostSnare2a -> DrumLoop.new(
+        tempo: 1,
+        name: "Ghost Snare 2a",
+        pattern: (
+          sn: [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1],
+        ),
+      ),
+      \ghostSnare2b -> DrumLoop.new(
+        tempo: 1,
+        name: "Ghost Snare 2b",
+        pattern: (
+          sn: [0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+        ),
+      ),
+      \contemporaryKick1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Contemporary Kick 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \contemporaryKick1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Contemporary Kick 1b",
+        pattern: (
+          bd: [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \contemporaryKick2a -> DrumLoop.new(
+        tempo: 1,
+        name: "Contemporary Kick 2a",
+        pattern: (
+          bd: [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \contemporaryKick2b -> DrumLoop.new(
+        tempo: 1,
+        name: "Contemporary Kick 2b",
+        pattern: (
+          bd: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \contemporaryKick3a -> DrumLoop.new(
+        tempo: 1,
+        name: "Contemporary Kick 3a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \contemporaryKick3b -> DrumLoop.new(
+        tempo: 1,
+        name: "Contemporary Kick 3b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \contemporaryKick4 -> DrumLoop.new(
+        tempo: 1,
+        name: "Contemporary Kick 4",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \drumroll1 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 1",
+        pattern: (
+          ht: [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0],
+          mt: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0],
+          lt: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+          oh: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          cy: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \drumroll2 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 2",
+        pattern: (
+          bd: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+          sn: [1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0],
+        ),
+      ),
+      \drumroll3 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 3",
+        pattern: (
+          sn: [1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1],
+        ),
+      ),
+      \drumroll4 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 4",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          sn: [0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1],
+          cy: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \drumroll5 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 5",
+        pattern: (
+          ht: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          mt: [0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          lt: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \drumroll6 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 6",
+        pattern: (
+          ht: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          mt: [0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+          lt: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0],
+          sn: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \drumroll7 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 7",
+        pattern: (
+          ht: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          mt: [0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0],
+          lt: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+          sn: [1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \drumroll8 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 8",
+        pattern: (
+          ht: [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          mt: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          lt: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+          sn: [1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \drumroll9 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 9",
+        pattern: (
+          ht: [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          mt: [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0],
+          lt: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+          sn: [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0],
+        ),
+      ),
+      \drumroll10 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 10",
+        pattern: (
+          ht: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+          mt: [0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+          lt: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1],
+          sn: [1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0],
+          bd: [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
+        ),
+      ),
+      \drumroll11 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 11",
+        pattern: (
+          ht: [0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+          mt: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+          lt: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0],
+          sn: [1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          bd: [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          cy: [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \drumroll12 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 12",
+        pattern: (
+          ht: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          mt: [0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+          lt: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+          sn: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          bd: [0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1],
+        ),
+      ),
+      \drumroll13 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 13",
+        pattern: (
+          ht: [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
+          mt: [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0],
+          lt: [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        ),
+      ),
+      \drumroll14 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 14",
+        pattern: (
+          ht: [0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+          lt: [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1],
+          sn: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \drumroll15 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 15",
+        pattern: (
+          bd: [0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+          sn: [1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0],
+          ch: [0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+          cy: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \drumroll16 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 16",
+        pattern: (
+          ht: [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          mt: [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0],
+          sn: [1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1],
+          cy: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \drumroll17 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 17",
+        pattern: (
+          bd: [0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0],
+          sn: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          cy: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \drumroll18 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 18",
+        pattern: (
+          bd: [0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0],
+          sn: [1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0],
+          cy: [0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \drumroll19 -> DrumLoop.new(
+        tempo: 1,
+        name: "Drumroll 19",
+        pattern: (
+          ht: [0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          mt: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+          lt: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+          bd: [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0],
+          sn: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0],
+          cy: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        ),
+      ),
+      \numbers1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Numbers 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
+        ),
+      ),
+      \numbers1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Numbers 1b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+        ),
+      ),
+      \dasModel1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Das Model 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \dasModel1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Das Model 1b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \transEuroExpress -> DrumLoop.new(
+        tempo: 1,
+        name: "Trans Euro Express",
+        pattern: (
+          bd: [1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1],
+        ),
+      ),
+      \musicNonStop1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Music Non Stop 1a",
+        pattern: (
+          bd: [1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          oh: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \musicNonStop2a -> DrumLoop.new(
+        tempo: 1,
+        name: "Music Non Stop 2a",
+        pattern: (
+          bd: [1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          rm: [1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0],
+          ch: [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+          oh: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \musicNonStop2b -> DrumLoop.new(
+        tempo: 1,
+        name: "Music Non Stop 2b",
+        pattern: (
+          bd: [1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          rm: [1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1],
+          ch: [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1],
+          oh: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \autobahn1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Autobahn 1a",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          rm: [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0],
+          cp: [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0],
+          ch: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          oh: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \autobahn1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Autobahn 1b",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          rm: [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0],
+          cp: [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0],
+          ch: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          oh: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+        ),
+      ),
+      \blueMonday1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Blue Monday 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          cp: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          oh: [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \blueMonday2a -> DrumLoop.new(
+        tempo: 1,
+        name: "Blue Monday 2a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          cp: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1],
+          oh: [0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+        ),
+      ),
+      \lookingForThePerfectBeat1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Looking For The Perfect Beat 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          rm: [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          cp: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          cb: [1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0],
+          ch: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        ),
+      ),
+      \lookingForThePerfectBeat1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Looking For The Perfect Beat 1b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1],
+          rm: [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          cp: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          cb: [1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0],
+          ch: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        ),
+      ),
+      \ageispolis -> DrumLoop.new(
+        tempo: 1,
+        name: "Ageispolis",
+        pattern: (
+          bd: [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          oh: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          ch: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        ),
+      ),
+      \supersonic1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Supersonic 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1],
+        ),
+      ),
+      \supersonic1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Supersonic 1b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1],
+        ),
+      ),
+      \supersonic2a -> DrumLoop.new(
+        tempo: 1,
+        name: "Supersonic 2a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          cb: [1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          rm: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          ch: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        ),
+      ),
+      \supersonic2b -> DrumLoop.new(
+        tempo: 1,
+        name: "Supersonic 2b",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0],
+          cb: [1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          rm: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+          ch: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        ),
+      ),
+      \weWillRockYou -> DrumLoop.new(
+        tempo: 1,
+        name: "We Will Rock You",
+        pattern: (
+          bd: [1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+          cp: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+        ),
+      ),
+      \italoDisco1a -> DrumLoop.new(
+        tempo: 1,
+        name: "Italo Disco 1a",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          mt: [0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          ht: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
+          rm: [0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
+          cp: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          cb: [1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          cy: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+          oh: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        ),
+      ),
+      \italoDisco1b -> DrumLoop.new(
+        tempo: 1,
+        name: "Italo Disco 1b",
+        pattern: (
+          bd: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+          sn: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          mt: [0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+          ht: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
+          rm: [0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
+          cp: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+          cb: [1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0],
+          cy: [1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+          ch: [1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+          oh: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        ),
+      ),
     ];
 
     all = all.freezeAsParent;
